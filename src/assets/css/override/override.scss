@@ -432,7 +432,6 @@ textarea.ant-input {
 }
 
 .loginbackground{
-  background-image: $mainloginbg;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -440,14 +439,14 @@ textarea.ant-input {
   align-items: center;
   position: relative;
   align-items: center;
-  background:$maincolor;
+  background:$darkmaincolor;
   &::after{
     position: absolute;
     content:  '';
     background-image: $mainloginLogo;
     background-size: contain;
     background-repeat: no-repeat;
-    @include position(absolute , 28% ,100px ,0 ,103px);
+    @include position(absolute , 1% ,100px ,0 ,103px);
   }
 }
 .ant-card-meta-description{

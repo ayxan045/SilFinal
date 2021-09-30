@@ -460,7 +460,6 @@ textarea.ant-input {
 }
 
 .loginbackground {
-  background-image: url("./../../img/mainbg.png");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -468,16 +467,16 @@ textarea.ant-input {
   align-items: center;
   position: relative;
   align-items: center;
-  background: #5fb656;
+  background: #3b7935;
 }
 .loginbackground::after {
   position: absolute;
   content: "";
-  background-image: url("./../../img/logos.svg");
+  background-image: url("./../../img/logon.png");
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
-  top: 28%;
+  top: 1%;
   left: 100px;
   bottom: 0;
   right: 103px;
