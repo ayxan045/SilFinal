@@ -10,7 +10,7 @@ export const getUserData = (exp) => async (dispatch) => {
   console.log(token)
   if (token !== null){
      axios
-        .get("https://reqres.in/api/users/4")
+        .get(`https://reqres.in/api/${routes.profile.user}`)
         .then((res) => {
           dispatch({
             type: types.SET_USER_LOGGED_IN,

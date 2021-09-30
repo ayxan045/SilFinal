@@ -1,6 +1,7 @@
 export const routes =  {
   profile:{
     login:'login',
+    user:'users/4'
   },
   admin:[
     {
