@@ -43,7 +43,7 @@ export const logInUser = (e, p) => async (dispatch) => {
   } else {
     dispatch({ type: types.LOADING_ON });
     await axios
-      .post(`https://reqres.in/api/${routes.login}` , {
+      .post(`https://reqres.in/api/${routes.profile.login}` , {
         username:e , password:p
       })
       .then((res) => {

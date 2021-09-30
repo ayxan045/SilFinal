@@ -24,7 +24,8 @@ import admin from "../../../const/api";
 import { useTranslation } from "react-i18next";
 import { whiteSpace } from "../../../utils/rules";
 
-const Persons = (props) => {
+const Common = (props) => {
+    let {url , name, label} = props
     const [form] = Form.useForm();
     const { t } = useTranslation();
     const [positions, setPositions] = useState([]);
@@ -90,7 +91,7 @@ const Persons = (props) => {
 
     const setEditingObject = async (i) => {
         setEditing(i);
-        await admin.get(`/persons/${i}`).then((res) => {
+        await admin.get(`/${url}/${i}`).then((res) => {
             let data = res.data
             form.setFieldsValue(data);
         });
@@ -103,7 +104,7 @@ const Persons = (props) => {
 
     const deletePosition = async (i) => {
         await admin
-            .delete(`/persons/${i}`)
+            .delete(`/${url}/${i}`)
             .then(() => {
                 // description
                 notify("silindi", true);
@@ -119,7 +120,7 @@ const Persons = (props) => {
         let obj = {...values}
         if (!editing) {
             await admin
-                .post("/persons",obj )
+                .post(`/${url}`,obj )
                 .then((res) => {
                     notify("", true);
                     getPositions();
@@ -131,7 +132,7 @@ const Persons = (props) => {
         } else {
             obj["id"] = editing;
             await admin
-                .put(`/persons/${editing}`, obj)
+                .put(`/${url}/${editing}`, obj)
                 .then((res) => {
                     notify("", true);
                     getPositions();
@@ -145,7 +146,7 @@ const Persons = (props) => {
 
     const getPositions = async () => {
         setSpin(true);
-        await admin.get("persons").then((res) => {
+        await admin.get(`${url}`).then((res) => {
             setSpin(false);
             setPositions(
                 res.data.map((p, index) => {
@@ -161,7 +162,7 @@ const Persons = (props) => {
 
     useEffect(() => {
         getPositions();
-    }, [t]);
+    }, [t , url]);
 
 
     return (
@@ -169,7 +170,7 @@ const Persons = (props) => {
             <Col xs={24}>
                 <div className="border animated fadeInDown p-2 mt-0 bg-white">
                     <UnorderedListOutlined className="f-20 mr5-15" />
-                    <span className="f-20 bold">Xidmət edən şəxslər</span>
+                    <span className="f-20 bold">{name}</span>
                 </div>
             </Col>
             <Col lg={12} xs={24}>
@@ -189,7 +190,7 @@ const Persons = (props) => {
             <Col lg={12} xs={24}>
                 <Card title={t("addTo")} className={"animated fadeInRight"}>
                     <Form layout="vertical" onFinish={savePosition} form={form}>
-                        <p className="mb-5">Şəxsin adı</p>
+                        <p className="mb-5">{label}</p>
                         <div className="form-lang">
                             <Form.Item
                                 className="mb-5"
@@ -213,4 +214,4 @@ const Persons = (props) => {
 };
 
 
-export default connect(null, { notify })(Persons);
+export default connect(null, { notify })(Common);
