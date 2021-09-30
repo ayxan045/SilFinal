@@ -19,5 +19,7 @@ export const routes =  {
       name:'Xidmət edən şəxslər',
       label:'Şəxsin adı',
     }
-  ]
+  ],
+  orders:'orders',
+  menu:"menu"
 }

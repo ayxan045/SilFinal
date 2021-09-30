@@ -943,9 +943,12 @@ m-10 {
 
 //add gallery
 .gallery{
-  .ant-upload-list-picture-card-container{
+  .ant-upload-list-picture-card-container , .mainImg{
     width: calc(33.3% - 8px);
     min-height: 200px;
+  }
+  .mainImg{
+    object-fit: cover;
   }
   .ant-upload.ant-upload-select-picture-card{
     width: 100%;

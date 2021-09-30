@@ -997,9 +997,12 @@ m-10 {
   height: 270px;
 }
 
-.gallery .ant-upload-list-picture-card-container {
+.gallery .ant-upload-list-picture-card-container, .gallery .mainImg {
   width: calc(33.3% - 8px);
   min-height: 200px;
+}
+.gallery .mainImg {
+  object-fit: cover;
 }
 .gallery .ant-upload.ant-upload-select-picture-card {
   width: 100%;

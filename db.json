@@ -1,7 +1,57 @@
 {
   "orders": [],
-  "categories": [],
-  "persons": [],
-  "tables": [],
-  "menu": []
+  "categories": [
+    {
+      "name": "test 2",
+      "id": 2
+    },
+    {
+      "name": "test 3",
+      "id": 3
+    }
+  ],
+  "persons": [
+    {
+      "name": "Murad Nərimanlı",
+      "id": 1
+    },
+    {
+      "name": "Neriman Muradov",
+      "id": 2
+    }
+  ],
+  "tables": [
+    {
+      "name": "Masa 1 ",
+      "id": 1
+    },
+    {
+      "name": "Masa 2",
+      "id": 2
+    },
+    {
+      "name": "Masa 3",
+      "id": 3
+    },
+    {
+      "name": "Masa 4",
+      "id": 4
+    }
+  ],
+  "menu": [
+    {
+      "name": "test ",
+      "price": 54,
+      "category": "test 3",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_2908148207.png",
+      "id": 2
+    },
+    {
+      "name": "test 3",
+      "price": 32,
+      "category": "test 3",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_2908148207.png",
+      "id": 3
+    }
+  ]
 }

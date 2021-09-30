@@ -34,25 +34,25 @@ const MenuList = (props) => {
         </Link>
       </Menu.Item>
       <Menu.Item key="13">
-        <Link to={`/menu`}>
-          <MenuUnfoldOutlined />
-          <span>Menyu</span>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="14">
         <Link to={`/persons`}>
           <UserOutlined />
           <span>Xidmət edənlər</span>
         </Link>
       </Menu.Item>
-      <Menu.Item key="15">
+      <Menu.Item key="14">
         <Link to={`/tables`}>
           <CodeSandboxOutlined />
           <span>Masalar</span>
         </Link>
       </Menu.Item>
+      <Menu.Item key="15">
+        <Link to={`/menu`}>
+          <MenuUnfoldOutlined />
+          <span>Menyu</span>
+        </Link>
+      </Menu.Item>
       <Menu.Item key="16">
-        <Link to={`/persons`}>
+        <Link to={`/orders`}>
           <AuditOutlined />
           <span>Sifarişlər</span>
         </Link>
