@@ -29,21 +29,18 @@ const TopMenu = (props) => {
   const content = () => {
     return (
       <div className="profil-info">
-        <Row className="border-bottom pt-1 pb-1 mb-10">
+        <Row className="border-bottom flex-align-center pt-1 pb-1 mb-10">
           <Col xs={4}>
-            {/*<Avatar size={38} src={props.gender === 0 ? man : woman} />*/}
-            <Avatar size={38} src={man} />
+            <Avatar size={38} src={props.user.avatar} />
           </Col>
           <Col className="border-right" xs={20}>
-            <div className="flex w-100 h-100 flex-align-center pr-1">
-              <h3>Admin</h3>
+            <div className="flex dir-column w-100 h-100 justify-center pr-1">
+              <h3>{props.user.first_name + ' ' + props.user.last_name }</h3>
+              <p>{props.user.email}</p>
             </div>
           </Col>
         </Row>
-        <div className="w-100  flex flex-between">
-          <Button>
-            <SettingOutlined /> <span>{t("settings")}</span>
-          </Button>
+        <div className="w-100  flex flex-end">
           <Button onClick={logOut}>
             <span>{t("logOut")}</span> <LogoutOutlined />
           </Button>
@@ -66,24 +63,6 @@ const TopMenu = (props) => {
           </Link>
         ) : null}
         <div className="top-menu-navigation">
-          <span>
-            <Tooltip placement="bottomRight" title={t("notifications")}>
-              <Popover
-                  className="ml-20"
-                  placement="bottomRight"
-                  content={<Notification/>}
-                  trigger="click"
-              >
-                <Badge>
-                  <Avatar
-                    className="circle-notification"
-                    size={35}
-                    icon={<BellFilled />}
-                  />
-                </Badge>
-              </Popover>
-            </Tooltip>
-          </span>
           <Tooltip placement="bottomRight" title={"Admin"}>
             <Popover
               className="ml-20"
@@ -91,8 +70,7 @@ const TopMenu = (props) => {
               content={content()}
               trigger="click"
             >
-              {/*<Avatar size={35} src={props.gender === 0 ? man : woman} />*/}
-              <Avatar size={35} src={man} />
+              <Avatar src={props?.user?.avatar} size={35} />
             </Popover>
           </Tooltip>
         </div>
@@ -100,10 +78,10 @@ const TopMenu = (props) => {
     </div>
   );
 };
-// const mapStateToProps = ({ user }) => {
-//   return {
-//     name: user.data.userName,
-//     gender: user.data.userGender,
-//   };
-// };
-export default connect(null, { logOut })(TopMenu);
+
+const mapStateToProps = ({ user }) => {
+  return {
+    user: user.data,
+  };
+};
+export default connect(mapStateToProps, { logOut })(TopMenu);

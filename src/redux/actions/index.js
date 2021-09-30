@@ -1,114 +1,81 @@
-import {
-  SET_USER_ERROR,
-  LOADING_ON,
-  LOADING_OFF,
-  SET_USER_LOGGED_IN,
-  LOG_OUT,
-  GET_CATS,
-  GET_CATS_ERROR,
-  CANCEL_EDIT,
-  SET_EDIT,
-  SET_OPTIONS,
-  SET_LANG,
-  SET_NOTIFICATION,
-  SET_STOCK, GET_LANG,
-  GET_LANG_ERROR,
-} from "./../types";
+import * as types from '../types'
 import admin from "./../../const/api";
 import history from "./../../const/history";
-import { ourls } from "../../utils/options";
-
-export const getStock = () => async (dispatch) => {
-  await admin.get("auth/stockinfo").then((res) => {
-    dispatch({
-      type: SET_STOCK,
-      payload: res.data,
-    });
-  });
-};
+import axios from "axios"
+import {routes} from "../../services/api-routes"
 
 export const getUserData = (exp) => async (dispatch) => {
-  dispatch({ type: LOADING_ON });
+  dispatch({ type: types.LOADING_ON });
   let token = localStorage.getItem("access_token")
-  if (token !== undefined){
-    dispatch({
-      type: SET_USER_LOGGED_IN,
-      payload: token,
-    });
-    dispatch({ type: LOADING_OFF });
+  console.log(token)
+  if (token !== null){
+     axios
+        .get("https://reqres.in/api/users/4")
+        .then((res) => {
+          dispatch({
+            type: types.SET_USER_LOGGED_IN,
+            payload: {...res.data.data},
+          });
+        })
+        .catch((err) => {
+          dispatch({
+            type: types.LOG_OUT,
+          });
+        })
+        .finally(() => {
+          dispatch({ type: types.LOADING_OFF });
+        });
   }
-  if (token === undefined){
+  else{
     dispatch({
-      type: LOG_OUT,
+      type: types.LOG_OUT,
     });
-    dispatch({ type: LOADING_OFF });
+    dispatch({ type: types.LOADING_OFF });
   }
-
 };
 
 export const logInUser = (e, p) => async (dispatch) => {
   if (e.trim().length === 0 ||   p.trim().length === 0) {
     dispatch({
-      type: SET_USER_ERROR,
+      type: types.SET_USER_ERROR,
       payload: { message: "İstifadəçi adı və şifrə daxil edilməlidir" },
     });
   } else {
-    dispatch({ type: LOADING_ON });
-    await admin
-      .post(`auth/login` , {
+    dispatch({ type: types.LOADING_ON });
+    await axios
+      .post(`https://reqres.in/api/${routes.login}` , {
         username:e , password:p
       })
       .then((res) => {
         localStorage.setItem("access_token", res.data.token);
-        // dispatch(getUserData());
-        dispatch({
-          type: SET_USER_LOGGED_IN,
-          payload: localStorage.getItem("access_token"),
-        });
+        dispatch(getUserData());
         history.push("/");
       })
       .catch((error) => {
         dispatch({
-          type: SET_USER_ERROR,
+          type: types.SET_USER_ERROR,
           payload: { message: "İstifadəçi adı və ya şifrə yanlışdır" },
         });
       })
       .finally(() => {
-        dispatch({ type: LOADING_OFF });
+        dispatch({ type: types.LOADING_OFF });
       });
   }
 };
 
 export const toggleLoading = (payload) => ({
-  type: payload ? LOADING_ON : LOADING_OFF,
+  type: payload ? types.LOADING_ON : types.LOADING_OFF,
 });
 
 export const logOut = () => ({
-  type: LOG_OUT,
+  type: types.LOG_OUT,
 });
-
-
-
-export const changeLanguage = (payload) => {
-  return {
-    type: SET_LANG,
-    payload,
-  };
-};
 
 export const notify = (description, isHappy) => {
   return {
-    type: SET_NOTIFICATION,
+    type: types.SET_NOTIFICATION,
     payload: { description, isHappy },
   };
 };
 
 
-export const setEdit = (bolean) => {
-    if (bolean === true){
-      return {type: SET_EDIT}
-    }
-    else {
-      return {type: CANCEL_EDIT}
-    }
-}
