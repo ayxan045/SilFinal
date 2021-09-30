@@ -2,7 +2,8 @@ import axios from "axios";
 
 
 export const admin = axios.create({
-  baseURL: `https://investaz.herokuapp.com/api`,
+  baseURL:  `http://localhost:8080`,
+  // baseURL:  `https://investaz.herokuapp.com/api`,
   headers: { "Content-Type": "application/json" },
 });
 
