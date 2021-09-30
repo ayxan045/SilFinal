@@ -3,17 +3,13 @@ import { message } from "antd";
 import { connect } from "react-redux";
 import { logInUser } from "./../../../redux/actions/index";
 import { Row, Col } from "antd";
-import ReCAPTCHA from "react-google-recaptcha";
-
-// import mainBg from "./../../../assets/img/mainbg.jpg";
 import "./style/login.css";
 import { useTranslation } from "react-i18next";
 
 const Login = (props) => {
   const { t } = useTranslation();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [enable, setEnable] = useState(undefined);
+  const [username, setUsername] = useState("eve.holt@reqres.in");
+  const [password, setPassword] = useState("cityslicka");
 
   useEffect(() => {
     if (props.message.trim().length !== 0) {
@@ -26,9 +22,6 @@ const Login = (props) => {
     await props.logInUser(username, password);
   };
 
-  function onChange(value) {
-    setEnable(value);
-  }
 
   return (
     <Row className="login-page w-100 h-100vh">

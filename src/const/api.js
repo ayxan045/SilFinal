@@ -2,7 +2,7 @@ import axios from "axios";
 import siteUrl from "./const";
 
 export const admin = axios.create({
-  baseURL: `${siteUrl}api`,
+  baseURL: `${siteUrl}`,
   headers: { "Content-Type": "application/json" },
 });
 
