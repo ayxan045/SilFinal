@@ -1,8 +1,9 @@
 {
-  "orders": [
+  "posts": [
     {
-      "name": "test",
-      "status": "test"
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
     }
   ]
 }
