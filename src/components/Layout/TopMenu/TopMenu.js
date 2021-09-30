@@ -1,22 +1,16 @@
 import React from "react";
-// import profile from "./../../../assets/img/profle.jpg";
-import man from "./../../../assets/img/man.jpg";
-// import woman from "./../../../assets/img/women.jfif";
 import {
-  BellFilled,
   LogoutOutlined,
-  SettingOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
 } from "@ant-design/icons";
-import logo from "./../../../assets/img/logo.svg";
-import { Button, Badge, Popover, Tooltip, Avatar, Row, Col } from "antd";
+import logo from "./../../../assets/img/logon.png";
+import { Button, Popover, Tooltip, Avatar, Row, Col } from "antd";
 import { logOut } from "../../../redux/actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import history from "../../../const/history";
 import { useTranslation } from "react-i18next";
-import Notification from "../../Elements/Notification";
 
 const TopMenu = (props) => {
   const { t } = useTranslation();

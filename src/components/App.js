@@ -6,10 +6,9 @@ import { Route, Switch, Redirect, Link } from "react-router-dom";
 import Login from "./Layout/Login/Login";
 import { getUserData } from "./../redux/actions";
 import MenuList from "./Elements/MenuList";
-// import BottomMenu from "./Elements/BottomMenu";
 import { Layout } from "antd";
 import { Button, Drawer, notification } from "antd";
-import logo from "../assets/img/logo.svg";
+import logo from "../assets/img/logon.png";
 import {
   CheckOutlined,
   MenuUnfoldOutlined,
