@@ -17,7 +17,7 @@ import {
 } from "@ant-design/icons";
 import { withTranslation } from "react-i18next";
 import history from "../const/history";
-import Home from "./Pages/Admin/Home/Home";
+import Routing from "./Layout/Routing/Routing";
 const { Content, Sider } = Layout;
 
 class App extends React.Component {
@@ -114,7 +114,6 @@ class App extends React.Component {
                   >
                     {this.toggleButtons()}
                     <MenuList collapsed={this.state.collapsed} />
-                    {/*<BottomMenu />*/}
                   </Sider>
                 ) : (
                   <Drawer
@@ -128,7 +127,6 @@ class App extends React.Component {
                     key="key"
                   >
                     <MenuList collapsed={this.state.collapsed} />
-                    {/*<BottomMenu />*/}
                   </Drawer>
                 )}
                 <Layout
@@ -145,13 +143,7 @@ class App extends React.Component {
                   />
                   <Content>
                     <div className={`page-routes`}>
-                      <Switch>
-                        <Route exact path={`/`} component={Home} />
-                        <Redirect to="/" />
-                        <Route path="/">
-                          <p className="flex all-center h-100vh">Not found</p>
-                        </Route>
-                      </Switch>
+                      <Routing/>
                     </div>
                   </Content>
                 </Layout>

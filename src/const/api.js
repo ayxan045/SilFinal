@@ -1,8 +1,8 @@
 import axios from "axios";
-import siteUrl from "./const";
+
 
 export const admin = axios.create({
-  baseURL: `${siteUrl}`,
+  baseURL: `https://investaz.herokuapp.com/api`,
   headers: { "Content-Type": "application/json" },
 });
 
