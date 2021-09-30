@@ -7,7 +7,8 @@ import {
   HomeOutlined,
   UserOutlined,
   MenuUnfoldOutlined,
-  OrderedListOutlined
+  OrderedListOutlined,
+  CodeSandboxOutlined
 } from "@ant-design/icons";
 import { logOut } from "../../redux/actions";
 import admin from "../../const/api";
@@ -45,6 +46,12 @@ const MenuList = (props) => {
         </Link>
       </Menu.Item>
       <Menu.Item key="15">
+        <Link to={`/tables`}>
+          <CodeSandboxOutlined />
+          <span>Masalar</span>
+        </Link>
+      </Menu.Item>
+      <Menu.Item key="16">
         <Link to={`/persons`}>
           <AuditOutlined />
           <span>Sifarişlər</span>

@@ -316,6 +316,7 @@ textarea.ant-input {
 
 .ant-table-tbody > tr.ant-table-row:hover > td {
   background: #5fb656 !important;
+  color: white !important;
 }
 
 .ant-col {
