@@ -5,60 +5,51 @@ import { connect } from "react-redux";
 import {
   AuditOutlined,
   HomeOutlined,
+  UserOutlined,
+  MenuUnfoldOutlined,
+  OrderedListOutlined
 } from "@ant-design/icons";
-import { useTranslation } from "react-i18next";
 import { logOut } from "../../redux/actions";
 import admin from "../../const/api";
 import history from "../../const/history";
-const { SubMenu } = Menu;
 
 const MenuList = (props) => {
-  const { t } = useTranslation();
-  const [openKeys, setOpenKeys] = useState([]);
-  const rootSubmenuKeys = ["10","50", "21", "31", "41", "51", "61"];
-
-  const onOpenChange = (openKeysList) => {
-    const latestOpenKey = openKeysList.find(
-      (key) => openKeys.indexOf(key) === -1
-    );
-    if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
-      setOpenKeys(openKeysList);
-    } else {
-      const opens = latestOpenKey ? [latestOpenKey] : [];
-      setOpenKeys(opens);
-    }
-  };
-
   return (
     <Menu
-      openKeys={openKeys}
       mode="inline"
       theme="light"
-      onOpenChange={onOpenChange}
       className="menu-ul"
     >
-
-      <SubMenu
-          key="10"
-          title={
-            <span>
-            <AuditOutlined />
-            <span>{t("admin")}</span>
-          </span>
-          }
-      >
-        <Menu.Item key="14">
-          <Link to={`/`}>
-            <span>Ana səhifə</span>
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="15">
-          <Link to={`/`}>
-            <span>Ana səhifə</span>
-          </Link>
-        </Menu.Item>
-      </SubMenu>
-
+      <Menu.Item key="11">
+        <Link to={`/`}>
+          <HomeOutlined />
+          <span>Ana səhifə</span>
+        </Link>
+      </Menu.Item>
+      <Menu.Item key="12">
+        <Link to={`/categories`}>
+          <OrderedListOutlined />
+          <span>Kateqoriyalar</span>
+        </Link>
+      </Menu.Item>
+      <Menu.Item key="13">
+        <Link to={`/menu`}>
+          <MenuUnfoldOutlined />
+          <span>Menyu</span>
+        </Link>
+      </Menu.Item>
+      <Menu.Item key="14">
+        <Link to={`/persons`}>
+          <UserOutlined />
+          <span>Xidmət edənlər</span>
+        </Link>
+      </Menu.Item>
+      <Menu.Item key="15">
+        <Link to={`/persons`}>
+          <AuditOutlined />
+          <span>Sifarişlər</span>
+        </Link>
+      </Menu.Item>
     </Menu>
   );
 };
