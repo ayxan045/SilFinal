@@ -138,7 +138,7 @@ function EditMenu(props) {
                                                 </div>
                                             </Col>
                                             <Col md={12} sm={12} xs={24}>
-                                                <p className={"mb-10"}>Şəkil</p>
+                                                <p className={"mb-10"}>Şəkil (url)</p>
                                                 <div className="form-lang">
                                                     <Form.Item
                                                         validateTrigger="onChange"
