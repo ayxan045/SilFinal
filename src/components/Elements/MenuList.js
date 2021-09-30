@@ -52,6 +52,11 @@ const MenuList = (props) => {
             <span>Ana səhifə</span>
           </Link>
         </Menu.Item>
+        <Menu.Item key="15">
+          <Link to={`/`}>
+            <span>Ana səhifə</span>
+          </Link>
+        </Menu.Item>
       </SubMenu>
 
     </Menu>

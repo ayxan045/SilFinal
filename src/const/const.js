@@ -1,4 +1,3 @@
-// export const siteUrl = "http://dev-layf.vac.az/api";
-export const siteUrl = "http://localhost:8000";
-
+export const siteUrl = "https://investaz.herokuapp.com/api";
+// export const siteUrl = "http://localhost:8000";
 export default siteUrl;
