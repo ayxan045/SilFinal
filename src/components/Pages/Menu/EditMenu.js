@@ -59,15 +59,9 @@ function EditMenu(props) {
     } , [])
 
     const saveItem = async (values) => {
-        let obj = {
-            name:values.name,
-            price: values.price,
-            category: values.category,
-            image: values.image
-        };
         if (!editing) {
             await admin
-                .post(`/menu`, obj)
+                .post(`/menu`, values)
                 .then((res) => {
                     notify("", true);
                     form.resetFields();
@@ -77,9 +71,8 @@ function EditMenu(props) {
                     notify(err.response, false);
                 });
         } else {
-            obj["id"] = editing;
             await admin
-                .put(`/menu/${editing}`, obj)
+                .put(`/menu/${editing}`, values)
                 .then((res) => {
                     notify("", true);
                     form.resetFields();

@@ -40,10 +40,10 @@
   ],
   "menu": [
     {
-      "name": "test ",
-      "price": 54,
-      "category": "test 3",
+      "name": "test 3",
       "image": "https://resant.foodelz.com/uploads/items/IMG_2908148207.png",
+      "category": "test 3",
+      "price": 54,
       "id": 2
     },
     {
