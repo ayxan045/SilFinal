@@ -190,12 +190,10 @@ const Menu = (props) => {
                                             ]
                                         }
                                     >
-                                        <Meta
-                                            title={g.name}
-                                        />
+                                        <strong className={'line-clamp line-1'}>{g.name}</strong>
                                         <div className="flex mt-10 w-100 flex-between">
-                                            <div>{g.category}</div>
-                                            <div>{g.price} azn</div>
+                                            <div className={'line-clamp line-1'}>{g.category}</div>
+                                            <strong className={'line-clamp line-1'}>{g.price} azn</strong>
                                         </div>
                                     </Card>
                                 </Col>

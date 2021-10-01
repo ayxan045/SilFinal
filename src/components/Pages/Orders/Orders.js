@@ -36,9 +36,9 @@ function Orders(props) {
 
     const cols = [
         { key: "tableIndex", value: "#", con: true },
-        { key: "title", value: "Başlıq", con: true },
-        { key: "desc", value: "Qısa xülasə", con: true },
-        { key: "createDate", value: "Yaradılma tarixi", con: false },
+        { key: "person", value: "Xidmət edən şəxs", con: true },
+        { key: "table", value: "Masa", con: true },
+        { key: "date", value: "Yaradılma tarixi", con: false },
         { key: "status", value: "Status", con: false },
         { key: "id", value: "", con: false },
     ];
@@ -51,14 +51,44 @@ function Orders(props) {
             width: 60,
         },
         {
-            title: "Başlıq",
-            dataIndex: "title",
+            title: "Xidmət edən şəxs",
+            dataIndex: "person",
             key: "2",
         },
         {
-            title: "Tarixi",
+            title: "Masa",
+            dataIndex: "table",
+            key: "3",
+        },
+        {
+            title: "Yaradılma tarixi",
             dataIndex: "date",
             key: "4",
+        },
+        {
+            title: "Ümumi məbləğ",
+            dataIndex: "total",
+            key: "5",
+            render: (i) => {
+                return  (
+                    <span className={i <= 0 ? 'red':'blue'}>{i} azn</span>
+                )
+            }
+        },
+        {
+            title: "Status",
+            dataIndex: "status",
+            key: "6",
+            render: (i) => {
+                return i === 0 ? (
+                    <span className="green">Yeni</span>
+                ) : i === 1 ? (
+                    <span className="blue">Sonlanmayan</span>
+                ) :
+                i === 2 ? (
+                    <span className="red">Sonlanan</span>
+                ): <span className="red">Ləğv edilmiş</span>
+            },
         },
         {
             title: "",
@@ -93,17 +123,22 @@ function Orders(props) {
                         </Popconfirm>
                         <Tooltip
                             className="ml-5"
-                            title={t("detailed")}
+                            title={'Sifariş məhsulları'}
                             placement="topRight"
                         >
-                            <Button
-                                className="border-none"
-                                type="text"
-                                shape="circle"
-                                onClick={() => viewMessage(i)}
+                            <Link
+                                to={{
+                                    pathname: `/orders/products/${i}`,
+                                }}
                             >
-                                <EyeFilled />
-                            </Button>
+                                <Button
+                                    className="border-none"
+                                    type="text"
+                                    shape="circle"
+                                >
+                                    <EyeFilled />
+                                </Button>
+                            </Link>
                         </Tooltip>
                     </div>
                 );
@@ -146,7 +181,7 @@ function Orders(props) {
                         catId: d.category_id,
                         title: d.name,
                         desc: d.category_id,
-                        createDate: moment(d?.created_at).format("DD-MM-YYYY hh:mm"),
+                        date: d.date ? moment(d?.date).format("DD-MM-YYYY hh:mm A") : ''
                     };
                 })
             );
