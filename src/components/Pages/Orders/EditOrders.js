@@ -19,12 +19,16 @@ import { PicCenterOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import ImgCrop from "antd-img-crop";
 import { Upload } from "antd";
+import history from "../../../const/history";
 import admin from "../../../const/api"
 const { Option } = Select;
 
 function EditOrders(props) {
     const [spin, setSpin] = useState(false);
     const [categories, setCategories] = useState([]);
+    const [status , setStatus] = useState(undefined)
+    const [date , setDate] = useState(undefined)
+    const [total , setTotal] = useState(undefined)
     const [persons, setPersons] = useState([]);
     const [tables, setTables] = useState([]);
     let editing = props.match.params.id;
@@ -34,6 +38,8 @@ function EditOrders(props) {
     const getPost = async () => {
         await admin.get(`orders/${editing}`).then((res) => {
             let data = res.data
+            setDate(data.date)
+            setTotal(data.total)
             setSpin(false);
             form.setFieldsValue(data);
         });
@@ -66,24 +72,32 @@ function EditOrders(props) {
     } , [])
 
     const saveItem = async (values) => {
+        let today = new Date();
         let obj = {
             ...values,
-            category: categories.find(c => c.id === parseInt(values.category_id)).name
+            person:persons.find(p => p.id === parseInt(values.person_id)).name,
+            table:tables.find(l => l.id === parseInt(values.table_id)).name,
+            status: status !== undefined ? status : 0,
         }
         if (!editing) {
+            obj['date'] = today
+            obj['total'] = 0
             await admin
-                .post(`/menu`, obj)
+                .post(`/orders`, obj)
                 .then((res) => {
                     notify("", true);
                     form.resetFields();
-                    window.history.back();
+                    console.log(res)
+                    history.push(`/orders/products/${res?.data?.id}`)
                 })
                 .catch((err) => {
                     notify(err.response, false);
                 });
         } else {
+            obj['date'] = date
+            obj['total'] = total
             await admin
-                .put(`/menu/${editing}`, obj)
+                .put(`/orders/${editing}`, obj)
                 .then((res) => {
                     notify("", true);
                     form.resetFields();

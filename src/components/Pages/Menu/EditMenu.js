@@ -24,7 +24,8 @@ const { Option } = Select;
 
 function EditMenu(props) {
     const [spin, setSpin] = useState(false);
-    const [file, setFile] = useState(null);
+    let imageUrl = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F19%2F53%2F4a%2F19534a2be73c101206161b297e76f14f.jpg&f=1&nofb=1'
+    const [file, setFile] = useState(imageUrl);
     const [categories, setCategories] = useState([]);
     let editing = props.match.params.id;
     const { t } = useTranslation();
@@ -70,6 +71,7 @@ function EditMenu(props) {
                     notify("", true);
                     form.resetFields();
                     window.history.back();
+                    setFile(imageUrl)
                 })
                 .catch((err) => {
                     notify(err.response, false);
@@ -81,6 +83,7 @@ function EditMenu(props) {
                     notify("", true);
                     form.resetFields();
                     window.history.back();
+                    setFile(imageUrl)
                 })
                 .catch((err) => {
                     notify(err.response, false);

@@ -1,11 +1,36 @@
 {
   "orders": [
     {
-      "id": 3,
-      "name": "2323d"
+      "total": 123,
+      "id": 1
     }
   ],
-  "order-products": [],
+  "order-products": [
+    {
+      "category_id": 4,
+      "menu_id": 5,
+      "price": 25,
+      "count": 3,
+      "total": 75,
+      "order_id": "1",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_1127712451.png",
+      "menu": " Səhər Yeməyi 2 Nəfərlik",
+      "category": "Səhər Yeməyi",
+      "id": 1
+    },
+    {
+      "category_id": 5,
+      "menu_id": 7,
+      "price": 12,
+      "count": 4,
+      "total": 48,
+      "order_id": "1",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_7671360772.png",
+      "menu": "  Avropa Pendir çeşidləri",
+      "category": "Qəlyanaltılar",
+      "id": 2
+    }
+  ],
   "categories": [
     {
       "name": "Şefdən Xüsusi Təqdimatla!",
@@ -260,18 +285,292 @@
       "price": 18,
       "category": "Əsas Yeməklər",
       "id": 17
+    },
+    {
+      "name": "Qrildə Qızıl Balıq  ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_7831577437.png",
+      "category_id": 8,
+      "price": 17,
+      "category": "Əsas Yeməklər",
+      "id": 18
+    },
+    {
+      "name": "Qrildə Forel ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_6643575353.png",
+      "category_id": 8,
+      "price": 13,
+      "category": "Əsas Yeməklər",
+      "id": 19
+    },
+    {
+      "name": "Tabaka Kənd çolpası ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_1258574005.png",
+      "category_id": 8,
+      "price": 12,
+      "category": "Əsas Yeməklər",
+      "id": 20
+    },
+    {
+      "name": " Çoban Qovurma",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_4677282201.png",
+      "category_id": 8,
+      "price": 15,
+      "category": "Əsas Yeməklər",
+      "id": 21
+    },
+    {
+      "name": "2 Nəfərlik Kabab Seti ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_3697829713.png",
+      "category_id": 9,
+      "price": 18,
+      "category": "Kabablar",
+      "id": 22
+    },
+    {
+      "name": "4 Nəfərlik Kabab Seti ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_2908148207.png",
+      "category_id": 9,
+      "price": 40,
+      "category": "Kabablar",
+      "id": 23
+    },
+    {
+      "name": "Tikə Kabab  ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_2852010327.png",
+      "category_id": 9,
+      "price": 10,
+      "category": "Kabablar",
+      "id": 24
+    },
+    {
+      "name": "Anrikot Kababı  ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_5052336062.png",
+      "category_id": 9,
+      "price": 12,
+      "category": "Kabablar",
+      "id": 25
+    },
+    {
+      "name": "Pendir Souslu Penne",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_786028395.png",
+      "category_id": 10,
+      "price": 8,
+      "category": "Pastalar",
+      "id": 26
+    },
+    {
+      "name": "Qızıl Balıq Fetuçini  ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_616428255.png",
+      "category_id": 10,
+      "price": 15,
+      "category": "Pastalar",
+      "id": 27
+    },
+    {
+      "name": "Spageti Bolonez ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_9225707405.png",
+      "category_id": 10,
+      "price": 8,
+      "category": "Pastalar",
+      "id": 28
+    },
+    {
+      "name": "Sezar Pizza Toyuq Ilə  ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_8684267998.png",
+      "category_id": 11,
+      "price": 10,
+      "category": "Pizza",
+      "id": 29
+    },
+    {
+      "name": "Sezar Pizza Balıq Ilə  ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_5719263625.png",
+      "category_id": 3,
+      "price": 12,
+      "category": "Şefdən Xüsusi Təqdimatla!",
+      "id": 30
+    },
+    {
+      "name": "Pepperoni Pizza  ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_8459582590.png",
+      "category_id": 11,
+      "price": 9,
+      "category": "Pizza",
+      "id": 31
+    },
+    {
+      "name": "Toyuqlu Sezar Roll ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_2806923846.png",
+      "category_id": 12,
+      "price": 7,
+      "category": "Burger Və Sendviçlər",
+      "id": 32
+    },
+    {
+      "name": "Xırçıldayan Toyuq Burger ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_5368929920.png",
+      "category_id": 12,
+      "price": 12,
+      "category": "Burger Və Sendviçlər",
+      "id": 33
+    },
+    {
+      "name": "Clab Sendvic ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_949762399.png",
+      "category_id": 12,
+      "price": 8,
+      "category": "Burger Və Sendviçlər",
+      "id": 34
+    },
+    {
+      "name": "Ərəb Şaurması çörəkdə ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_9006726152.png",
+      "category_id": 12,
+      "price": 7,
+      "category": "Burger Və Sendviçlər",
+      "id": 35
+    },
+    {
+      "name": "Black Forest  ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_391682909.png",
+      "category_id": 13,
+      "price": 7.8,
+      "category": "Desert",
+      "id": 36
+    },
+    {
+      "name": "Çizkeyk Nyu-York ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_1475065916.png",
+      "category_id": 13,
+      "price": 7.5,
+      "category": "Desert",
+      "id": 37
+    },
+    {
+      "name": "Tiramisu  ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_3519499594.png",
+      "category_id": 13,
+      "price": 7.5,
+      "category": "Desert",
+      "id": 38
+    },
+    {
+      "name": "Brownie Dondurma Ilə ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_2894735888.png",
+      "category_id": 13,
+      "price": 8,
+      "category": "Desert",
+      "id": 39
+    },
+    {
+      "name": "Sadə su",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F19%2F53%2F4a%2F19534a2be73c101206161b297e76f14f.jpg&f=1&nofb=1",
+      "category_id": 14,
+      "price": 2,
+      "category": "Alkoqolsuz Içkilər",
+      "id": 40
+    },
+    {
+      "name": "Kompot",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F19%2F53%2F4a%2F19534a2be73c101206161b297e76f14f.jpg&f=1&nofb=1",
+      "category_id": 14,
+      "price": 3,
+      "category": "Alkoqolsuz Içkilər",
+      "id": 41
+    },
+    {
+      "name": "Meyvə şirəsi",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F19%2F53%2F4a%2F19534a2be73c101206161b297e76f14f.jpg&f=1&nofb=1",
+      "category_id": 14,
+      "price": 3,
+      "category": "Alkoqolsuz Içkilər",
+      "id": 42
+    },
+    {
+      "name": "Cola Fanta Sprite",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F19%2F53%2F4a%2F19534a2be73c101206161b297e76f14f.jpg&f=1&nofb=1",
+      "category_id": 14,
+      "price": 3,
+      "category": "Alkoqolsuz Içkilər",
+      "id": 43
+    },
+    {
+      "name": "Olmeca Sliver",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F19%2F53%2F4a%2F19534a2be73c101206161b297e76f14f.jpg&f=1&nofb=1",
+      "category_id": 15,
+      "price": 6,
+      "category": "Alkoqollu Içkilər",
+      "id": 44
+    },
+    {
+      "name": "Patron Anejo",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F19%2F53%2F4a%2F19534a2be73c101206161b297e76f14f.jpg&f=1&nofb=1",
+      "category_id": 15,
+      "price": 7.5,
+      "category": "Alkoqollu Içkilər",
+      "id": 45
+    },
+    {
+      "name": "Sierra Sliver",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F19%2F53%2F4a%2F19534a2be73c101206161b297e76f14f.jpg&f=1&nofb=1",
+      "category_id": 15,
+      "price": 90,
+      "category": "Alkoqollu Içkilər",
+      "id": 46
+    },
+    {
+      "name": "Jagermeister",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F19%2F53%2F4a%2F19534a2be73c101206161b297e76f14f.jpg&f=1&nofb=1",
+      "category_id": 15,
+      "price": 6,
+      "category": "Alkoqollu Içkilər",
+      "id": 47
+    },
+    {
+      "name": "Səhər Yeməyi 4 Nəfərlik  ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_6114739592.png",
+      "category_id": 16,
+      "price": 35,
+      "category": "Ailə Səhər Yemək Menyusu",
+      "id": 48
+    },
+    {
+      "name": "Uşaq Menusu Set Çizburger ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_5525775696.png",
+      "category_id": 16,
+      "price": 10,
+      "category": "Ailə Səhər Yemək Menyusu",
+      "id": 49
+    },
+    {
+      "name": "Uşaq Menusu Set Çikenburger ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_632105214.png",
+      "category_id": 16,
+      "price": 9,
+      "category": "Ailə Səhər Yemək Menyusu",
+      "id": 50
+    },
+    {
+      "name": "Uşaq Menusu Set Pizza ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_627137100.png",
+      "category_id": 16,
+      "price": 9,
+      "category": "Ailə Səhər Yemək Menyusu",
+      "id": 51
     }
   ],
-  "dishes": [
+  "totals": [
     {
       "id": 1,
-      "order_id": 1,
-      "name": "test",
-      "category": "test 2",
-      "category_id": 1,
-      "quantity": 2,
-      "price": 23.2,
-      "total": 46.4
+      "order_id":1,
+      "total": 4343
+    }
+  ],
+  "reasons": [
+    {
+      "id": 1,
+      "order_id":1,
+      "reason": "aafad"
     }
   ]
 }
