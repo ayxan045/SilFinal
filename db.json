@@ -1,57 +1,277 @@
 {
-  "orders": [],
+  "orders": [
+    {
+      "id": 3,
+      "name": "2323d"
+    }
+  ],
+  "order-products": [],
   "categories": [
     {
-      "name": "test 2",
-      "id": 2
+      "name": "Şefdən Xüsusi Təqdimatla!",
+      "id": 3
     },
     {
-      "name": "test 3",
-      "id": 3
+      "name": "Səhər Yeməyi",
+      "id": 4
+    },
+    {
+      "name": "Qəlyanaltılar",
+      "id": 5
+    },
+    {
+      "name": "Salatlar",
+      "id": 6
+    },
+    {
+      "name": "Şorbalar",
+      "id": 7
+    },
+    {
+      "name": "Əsas Yeməklər",
+      "id": 8
+    },
+    {
+      "name": "Kabablar",
+      "id": 9
+    },
+    {
+      "name": "Pastalar",
+      "id": 10
+    },
+    {
+      "name": "Pizza",
+      "id": 11
+    },
+    {
+      "name": "Burger Və Sendviçlər",
+      "id": 12
+    },
+    {
+      "name": "Desert",
+      "id": 13
+    },
+    {
+      "name": "Alkoqolsuz Içkilər",
+      "id": 14
+    },
+    {
+      "name": "Alkoqollu Içkilər",
+      "id": 15
+    },
+    {
+      "name": "Ailə Səhər Yemək Menyusu",
+      "id": 16
     }
   ],
   "persons": [
     {
-      "name": "Murad Nərimanlı",
+      "name": "Murad Nerimanli",
       "id": 1
     },
     {
-      "name": "Neriman Muradov",
+      "name": "Elşən Məmmədov",
       "id": 2
+    },
+    {
+      "name": "Abbas Quluzadə",
+      "id": 3
+    },
+    {
+      "name": "Aga Ehmedov",
+      "id": 4
+    },
+    {
+      "name": "Elgun Muradov",
+      "id": 5
     }
   ],
   "tables": [
     {
-      "name": "Masa 1 ",
+      "name": "masa 1",
       "id": 1
     },
     {
-      "name": "Masa 2",
+      "name": "masa 2",
       "id": 2
     },
     {
-      "name": "Masa 3",
+      "name": "masa 3",
       "id": 3
     },
     {
-      "name": "Masa 4",
+      "name": "Vip 1",
       "id": 4
+    },
+    {
+      "name": "Vip 2",
+      "id": 5
+    },
+    {
+      "name": "Vip 3",
+      "id": 6
+    },
+    {
+      "name": "Mk 1",
+      "id": 7
+    },
+    {
+      "name": "Mk 2",
+      "id": 8
+    },
+    {
+      "name": "Mk 3",
+      "id": 9
     }
   ],
   "menu": [
     {
-      "name": "test 3",
-      "image": "https://resant.foodelz.com/uploads/items/IMG_2908148207.png",
-      "category": "test 3",
-      "price": 54,
+      "name": "Atom Bonfile ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_9774391791.png",
+      "category_id": 3,
+      "price": 50,
+      "category": "Şefdən Xüsusi Təqdimatla!",
+      "id": 1
+    },
+    {
+      "name": "Sebzeli Atom Bonfile (İki Kişilik) ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_3950923973.png",
+      "category_id": 3,
+      "price": 50,
+      "category": "Şefdən Xüsusi Təqdimatla!",
       "id": 2
     },
     {
-      "name": "test 3",
-      "price": 32,
-      "category": "test 3",
-      "image": "https://resant.foodelz.com/uploads/items/IMG_2908148207.png",
+      "name": " Peynirli Atom Bonfile (İki Kişilik)",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_6615537688.png",
+      "category_id": 3,
+      "price": 60,
+      "category": "Şefdən Xüsusi Təqdimatla!",
       "id": 3
+    },
+    {
+      "name": "Səhər Yeməyi 1 Nəfərlik  15 ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_4670314885.png",
+      "category_id": 4,
+      "price": 15,
+      "category": "Səhər Yeməyi",
+      "id": 4
+    },
+    {
+      "name": " Səhər Yeməyi 2 Nəfərlik",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_1127712451.png",
+      "category_id": 4,
+      "price": 25,
+      "category": "Səhər Yeməyi",
+      "id": 5
+    },
+    {
+      "name": " Səhər Yeməyi 4 Nəfərlik",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_1491620873.png",
+      "category_id": 4,
+      "price": 40,
+      "category": "Səhər Yeməyi",
+      "id": 6
+    },
+    {
+      "name": "  Avropa Pendir çeşidləri",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_7671360772.png",
+      "category_id": 5,
+      "price": 12,
+      "category": "Qəlyanaltılar",
+      "id": 7
+    },
+    {
+      "name": "  Ağ Pendir ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_3736499181.png",
+      "category_id": 5,
+      "price": 4,
+      "category": "Qəlyanaltılar",
+      "id": 8
+    },
+    {
+      "name": " Turşu çeşitleri",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_3268778230.png",
+      "category_id": 5,
+      "price": 5,
+      "category": "Qəlyanaltılar",
+      "id": 9
+    },
+    {
+      "name": " Garden Toyuq Salatı  ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_4552602147.png",
+      "category_id": 6,
+      "price": 6,
+      "category": "Salatlar",
+      "id": 10
+    },
+    {
+      "name": "Ət Salatı ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_6277523588.png",
+      "category_id": 6,
+      "price": 10,
+      "category": "Salatlar",
+      "id": 11
+    },
+    {
+      "name": "Sezar Toyuq Ilə",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_961213314.png",
+      "category_id": 6,
+      "price": 9,
+      "category": "Salatlar",
+      "id": 12
+    },
+    {
+      "name": "Qaymaqlı Krevet şorbası",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_2600320034.png",
+      "category_id": 7,
+      "price": 6,
+      "category": "Şorbalar",
+      "id": 13
+    },
+    {
+      "name": "Tomat Krem şorbası  ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_2208374844.png",
+      "category_id": 7,
+      "price": 5,
+      "category": "Şorbalar",
+      "id": 14
+    },
+    {
+      "name": "Mərci şorbası ",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_1724274231.png",
+      "category_id": 7,
+      "price": 4,
+      "category": "Şorbalar",
+      "id": 15
+    },
+    {
+      "name": "  Şəffaf Toyuq şorbası",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_189860741.png",
+      "category_id": 7,
+      "price": 5,
+      "category": "Şorbalar",
+      "id": 16
+    },
+    {
+      "name": "Medalyon",
+      "image": "https://resant.foodelz.com/uploads/items/IMG_3818305044.png",
+      "category_id": 8,
+      "price": 18,
+      "category": "Əsas Yeməklər",
+      "id": 17
+    }
+  ],
+  "dishes": [
+    {
+      "id": 1,
+      "order_id": 1,
+      "name": "test",
+      "category": "test 2",
+      "category_id": 1,
+      "quantity": 2,
+      "price": 23.2,
+      "total": 46.4
     }
   ]
 }

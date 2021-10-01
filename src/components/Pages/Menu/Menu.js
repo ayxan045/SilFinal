@@ -47,7 +47,7 @@ const Menu = (props) => {
     const {t} = useTranslation();
     const getData = (e) => {
         setSpin(true);
-        admin.get(`menu` , {params:{category:e}}).then((res) => {
+        admin.get(`menu` , {params:{category_id:e}}).then((res) => {
             res.data && setSpin(false);
             setGallery(
                 res.data.map((d, index) => {
@@ -120,7 +120,7 @@ const Menu = (props) => {
                             {
                                 categories.map((w, i) => {
                                     return (
-                                        <Option key={i} value={w.name}>
+                                        <Option key={i} value={w.id}>
                                             {w.name}
                                         </Option>
                                     );
