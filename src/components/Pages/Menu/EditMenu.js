@@ -59,9 +59,13 @@ function EditMenu(props) {
     } , [])
 
     const saveItem = async (values) => {
+        let obj = {
+            ...values,
+            category: categories.find(c => c.id === parseInt(values.category_id)).name
+        }
         if (!editing) {
             await admin
-                .post(`/menu`, values)
+                .post(`/menu`, obj)
                 .then((res) => {
                     notify("", true);
                     form.resetFields();
@@ -72,7 +76,7 @@ function EditMenu(props) {
                 });
         } else {
             await admin
-                .put(`/menu/${editing}`, values)
+                .put(`/menu/${editing}`, obj)
                 .then((res) => {
                     notify("", true);
                     form.resetFields();
@@ -148,7 +152,7 @@ function EditMenu(props) {
                                                 <Form.Item
                                                     className="mb-5"
                                                     validateTrigger="onChange"
-                                                    name={`category`}
+                                                    name={`category_id`}
                                                     rules={[noWhitespace(t("inputError"))]}
                                                 >
                                                     <Select
@@ -163,7 +167,7 @@ function EditMenu(props) {
                                                         }
                                                     >
                                                         {categories.map((c , i)=>(
-                                                            <Option key={i}  value={c.name}>
+                                                            <Option key={i}  value={c.id}>
                                                                 {c.name}
                                                             </Option>
                                                         ))}
