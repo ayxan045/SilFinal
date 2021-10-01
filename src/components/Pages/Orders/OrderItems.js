@@ -13,9 +13,9 @@ import {
     Popconfirm, Select, InputNumber,
 } from "antd";
 import {
-    UnorderedListOutlined,
+    DownCircleOutlined,
     EditFilled,
-    DeleteFilled, PicCenterOutlined,
+    DeleteFilled, PicCenterOutlined, RetweetOutlined,
 } from "@ant-design/icons";
 import { convertColumns } from "../../../utils/columnconverter";
 import {notify } from '../../../redux/actions'
@@ -69,36 +69,111 @@ const OrderItems = (props) => {
             dataIndex: "menu",
         },
         {
-            title: "",
+            title: t("category"),
             key: "4",
-            dataIndex: "id",
+            dataIndex: "category",
+        },
+        {
+            title:'Say',
+            key: "5",
+            dataIndex: "count",
+        },
+        {
+            title:'Qiymət (azn)',
+            key: "6",
+            dataIndex: "price",
+            render: (i) => {
+                return <span>{i} azn</span>
+            },
+        },
+        {
+            title:'Ümumi (azn)',
+            key: "6",
+            dataIndex: "total",
+            render: (i) => {
+                return <span>{i} azn</span>
+            },
+        },
+        {
+            title: "Status",
+            dataIndex: "status",
+            key: "6",
+            render: (i) => {
+                return i === 0 ? (
+                    <span className={'green'}>Hazırlanır</span>
+                ) : i === 1 ? (
+                        <span className="blue">Təhvil verildi</span>
+                    ) :
+                    i === 2 ? (
+                        <span className="red">Geri verildi</span>
+                    ): null
+            },
+        },
+        {
+            title: "",
+            key: "7",
+            dataIndex: "buttons",
             width: 30,
             render: (i) => {
                 return (
                     <div className="flex flex-end">
-                        <Popconfirm
-                            placement="topRight"
-                            title={t("areYouSure")}
-                            onConfirm={() => deletePosition(i)}
-                            okText={t("yes")}
-                            cancelText={t("no")}
-                        >
-                            <Tooltip className="ml-5" title={t("delete")}>
-                                <Button className="border-none" type="text" shape="circle">
-                                    <DeleteFilled />
+                        {i.status === 0 &&
+                            <Popconfirm
+                                placement="topRight"
+                                title={'Təhvil verildiyinə əminsinizmi ?'}
+                                onConfirm={() => changeStatus(i ,1)}
+                                okText={t("yes")}
+                                cancelText={t("no")}
+                            >
+                                <Tooltip className="ml-5" placement="left" title={'Təhvil ver'}>
+                                    <Button className="border-none" type="text" shape="circle">
+                                        <DownCircleOutlined />
+                                    </Button>
+                                </Tooltip>
+                            </Popconfirm>
+                        }
+                        {i.status === 1 &&
+                            <Popconfirm
+                                placement="topRight"
+                                title={'Geri verildiyinə əminsinizmi ?'}
+                                onConfirm={() => changeStatus(i ,2)}
+                                okText={t("yes")}
+                                cancelText={t("no")}
+                            >
+                                <Tooltip className="ml-5" placement={'left'} title={'Geri qaytar'}>
+                                    <Button className="border-none" type="text" shape="circle">
+                                        <RetweetOutlined />
+                                    </Button>
+                                </Tooltip>
+                            </Popconfirm>
+                        }
+                        {i.status !== 1 &&
+                            <Popconfirm
+                                placement="topRight"
+                                title={t("areYouSure")}
+                                onConfirm={() => deletePosition(i.id)}
+                                okText={t("yes")}
+                                cancelText={t("no")}
+                            >
+                                <Tooltip className="ml-5" title={t("cancel")}>
+                                    <Button className="border-none" type="text" shape="circle">
+                                        <DeleteFilled/>
+                                    </Button>
+                                </Tooltip>
+                            </Popconfirm>
+                        }
+                        {(i.status !== 1 && i.status !== 2) &&
+                            <Tooltip className="ml-5" title={t("edit")} placement="topRight">
+                                <Button
+                                    className="border-none"
+                                    type="text"
+                                    shape="circle"
+                                    onClick={() => setEditingObject(i.id)}
+                                >
+                                    <EditFilled/>
                                 </Button>
                             </Tooltip>
-                        </Popconfirm>
-                        <Tooltip className="ml-5" title={t("edit")} placement="topRight">
-                            <Button
-                                className="border-none"
-                                type="text"
-                                shape="circle"
-                                onClick={() => setEditingObject(i)}
-                            >
-                                <EditFilled />
-                            </Button>
-                        </Tooltip>
+                        }
                     </div>
                 );
             },
@@ -122,6 +197,17 @@ const OrderItems = (props) => {
         form.resetFields();
     };
 
+    const changeStatus = (i , status) => {
+        let obj ={
+            ...i.obj,
+            status,
+        }
+        console.log(obj)
+        admin.put(`order-products/${i.id}`,  obj).then(()=>{
+            getPositions()
+        })
+    }
+
     const deletePosition = async (i) => {
         await admin
             .delete(`/order-products/${i}`)
@@ -134,10 +220,20 @@ const OrderItems = (props) => {
             });
     };
 
+    const putOrderData = (params) => {
+        admin.get(`orders/${id}`).then((res)=>{
+            admin.put(`orders/${id}`,  {...res.data , ...params}).then(()=>{
+                getOrderData(id)
+            })
+        })
+    }
+
+
     const savePosition = async (values) => {
         let obj = {
             ...values,
             order_id:id,
+            status:0,
             image,
             menu:menus.find(m=>m.id === parseInt(values.menu_id)).name,
             category:categories.find(m=>m.id === parseInt(values.category_id)).name
@@ -148,6 +244,7 @@ const OrderItems = (props) => {
                 .then((res) => {
                     notify("", true);
                     getPositions();
+                    orderData.status === 0 && putOrderData({status:1})
                     cancelEditing();
                 })
                 .catch((err) => {
@@ -176,42 +273,42 @@ const OrderItems = (props) => {
 
     const getPositions = async () => {
         setSpin(true);
-        await admin.get(`order-products` , {params:{order_id:id}}).then((res) => {
-            setSpin(false);
-            if (res.data.length && orderData.status === 0) {
-               admin.put(`orders/${id}`,  {...orderData , status:1}).then(()=>{
-                   getOrderData(id)
-               })
-            }
-            if(!res.data.length && orderData.status === 1){
-                admin.put(`orders/${id}`,  {...orderData , status:0 , total:0}).then(()=>{
-                    getOrderData(id)
-                })
-            }
-            if(res.data.length){
-                let total = 0
-                res.data.forEach((p, index) => {
-                    total += p.total
-                })
-                admin.put(`orders/${id}`,  {...orderData , total}).then(()=>{
-                    getOrderData(id)
-                })
-            }
-            if(!res.data.length && orderData.status === 0){
-                admin.put(`orders/${id}`,  {...orderData , total:0}).then(()=>{
-                    getOrderData(id)
-                })
-            }
-            setPositions(
-                res.data.map((p, index) => {
-                    return {
-                        key: index + 1,
-                        ...p,
-                        index: index + 1,
-                    };
-                })
-            );
-        });
+        setTimeout(async ()=>{
+           await admin.get(`order-products` , {params:{order_id:id}}).then((res) => {
+                setSpin(false);
+                if(!res.data.length && orderData.status === 1){
+                    putOrderData({status:0 , total:0})
+                }
+                if(res.data.length){
+                    let total = 0
+                    res.data.forEach((p, index) => {
+                        if(p.status !== 2){
+                            total += p.total
+                        }
+                    })
+                    putOrderData({total})
+                }
+                if(!res.data.length && orderData.status === 0){
+                    admin.put(`orders/${id}`,  {...orderData , total:0}).then(()=>{
+                        getOrderData(id)
+                    })
+                }
+                setPositions(
+                    res.data.map((p, index) => {
+                        return {
+                            key: index + 1,
+                            ...p,
+                            index: index + 1,
+                            buttons:{
+                                id:p.id,
+                                status:p.status,
+                                obj:p
+                            }
+                        };
+                    })
+                );
+            });
+        } , [1000])
     };
 
     useEffect(() => {
@@ -275,22 +372,7 @@ const OrderItems = (props) => {
                     </Link>
                 </div>
             </Col>
-
-            <Col  md={19} xs={24}>
-                <Table
-                    loading={spin}
-                    size="small"
-                    className="bg-white animated fadeInRight"
-                    columns={columns}
-                    dataSource={convertColumns(positions, cols)}
-                    pagination={{
-                        pageSize: 10,
-                        current_page: 1,
-                        total: positions.length,
-                    }}
-                />
-            </Col>
-            <Col md={5}>
+            <Col xs={24}>
                 {!spin &&
                 <div className="h-100  animated fadeInLeft  p-2 mt-0 bg-white">
                     <div className={'flex mt-10 flex-between'}>
@@ -320,6 +402,20 @@ const OrderItems = (props) => {
                     </div>
                 </div>
                 }
+            </Col>
+            <Col xs={24}>
+                <Table
+                    loading={spin}
+                    size="small"
+                    className="bg-white animated fadeInRight"
+                    columns={columns}
+                    dataSource={convertColumns(positions, cols)}
+                    pagination={{
+                        pageSize: 10,
+                        current_page: 1,
+                        total: positions.length,
+                    }}
+                />
             </Col>
             <Col>
                 <Card title={t("addTo")} className={"animated fadeInRight"}>
@@ -390,18 +486,6 @@ const OrderItems = (props) => {
                                         </Form.Item>
                                     </Col>
                                     <Col md={6} sm={12} xs={24}>
-                                        <p className={"mb-10"}>Qiymət (azn)</p>
-                                        <div className="form-lang">
-                                            <Form.Item
-                                                validateTrigger="onChange"
-                                                name={`price`}
-                                                rules={[noWhitespace(t("inputError"))]}
-                                            >
-                                                <InputNumber readOnly className="w-100" />
-                                            </Form.Item>
-                                        </div>
-                                    </Col>
-                                    <Col md={6} sm={12} xs={24}>
                                         <p className={"mb-10"}>Say</p>
                                         <div className="form-lang">
                                             <Form.Item
@@ -412,6 +496,18 @@ const OrderItems = (props) => {
                                                 <InputNumber
                                                     onChange={(e) =>{countChange(e)}}
                                                     min={1} className="w-100" />
+                                            </Form.Item>
+                                        </div>
+                                    </Col>
+                                    <Col md={6} sm={12} xs={24}>
+                                        <p className={"mb-10"}>Qiymət (azn)</p>
+                                        <div className="form-lang">
+                                            <Form.Item
+                                                validateTrigger="onChange"
+                                                name={`price`}
+                                                rules={[noWhitespace(t("inputError"))]}
+                                            >
+                                                <InputNumber readOnly className="w-100" />
                                             </Form.Item>
                                         </div>
                                     </Col>
