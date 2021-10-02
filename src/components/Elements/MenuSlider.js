@@ -60,7 +60,7 @@ function MenuSlider(props) {
            <div className="w-100">
                <Slider  {...settings}>
                    {gallery.map((g, i) => (
-                       <div className={'p-1'}>
+                       <div className={'p-1 mt-10 bg-white'}>
                            <MenuItem
                                key={i}
                                g={g}
