@@ -297,7 +297,7 @@ const OrderItems = (props) => {
         setTimeout(async ()=>{
            await admin.get(`order-products` , {params:{order_id:id}}).then((res) => {
                 setSpin(false);
-                if(!res.data.length && orderData.status !== 0){
+                if(!res.data.length && orderData.status === 1){
                     putOrderData({status:0 , total:0})
                 }
                 if(res.data.length){
