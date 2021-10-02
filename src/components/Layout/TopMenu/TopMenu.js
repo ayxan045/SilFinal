@@ -57,7 +57,7 @@ const TopMenu = (props) => {
           </Link>
         ) : null}
         <div className="top-menu-navigation">
-          <Tooltip placement="bottomRight" title={"Admin"}>
+          <Tooltip placement="bottomRight" title={props.user.first_name}>
             <Popover
               className="ml-20"
               placement="bottomRight"
