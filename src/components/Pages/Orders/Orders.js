@@ -212,23 +212,32 @@ function Orders(props) {
         setSpin(true);
         admin.get(`orders`, { params: { status } }).then((res) => {
             res.data && setSpin(false);
-            setPostList(
-                res.data.reverse().map((d, index) => {
-                    return {
-                        ...d,
-                        key: index + 1,
-                        index,
-                        tableIndex: index + 1,
-                        title: d.name,
-                        buttons:{
-                            obj:d,
-                            id:d.id,
-                            status:d.status
-                        },
-                        date: d.date ? moment(d?.date).format("DD-MM-YYYY hh:mm A") : ''
-                    };
-                })
-            );
+            let news = [];
+            let waiting = [];
+            let finished = [];
+            let canceled = [];
+            res.data.reverse().map((d, index) => {
+                let obj = {
+                    ...d,
+                    key: index + 1,
+                    index,
+                    tableIndex: index + 1,
+                    title: d.name,
+                    buttons:{
+                        obj:d,
+                        id:d.id,
+                        status:d.status
+                    },
+                    date: d.date ? moment(d?.date).format("DD-MM-YYYY hh:mm A") : ''
+                }
+                return (
+                    d.status === 0 ? news.push(obj) :
+                        d.status === 1 ? waiting.push(obj) :
+                            d.status === 2 ? finished.push(obj) :
+                                d.status === 3 ? canceled.push(obj) : undefined
+               )
+            })
+            setPostList([...news , ...waiting , ...finished , ...canceled]);
         });
     };
 
