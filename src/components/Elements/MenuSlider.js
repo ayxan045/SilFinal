@@ -38,22 +38,6 @@ function MenuSlider(props) {
         slidesToShow: 4,
         slidesToScroll: 4,
         initialSlide: 0,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
     };
 
     return (
@@ -73,18 +57,20 @@ function MenuSlider(props) {
                     </Link>
                 </div>
             </div>
-            <Slider  {...settings}>
-                {gallery.map((g, i) => (
-                    <div className={'p-1'}>
-                        <MenuItem
-                            key={i}
-                            g={g}
-                            spin={spin}
-                            slider={true}
-                        />
-                    </div>
-                ))}
-            </Slider>
+           <div className="w-100">
+               <Slider  {...settings}>
+                   {gallery.map((g, i) => (
+                       <div className={'p-1 mt-10 bg-white'}>
+                           <MenuItem
+                               key={i}
+                               g={g}
+                               spin={spin}
+                               slider={true}
+                           />
+                       </div>
+                   ))}
+               </Slider>
+           </div>
 
         </div>
     );
