@@ -21,6 +21,7 @@ import {useTranslation} from "react-i18next";
 import moment from "moment";
 import {connect} from "react-redux";
 import {notify} from "../../../redux/actions";
+import MenuItem from "../../Elements/MenuItem";
 const { Option } = Select;
 
 const {Meta} = Card;
@@ -136,66 +137,12 @@ const Menu = (props) => {
                         <Row gutter={[16, 16]}>
                             {gallery.map((g, i) => (
                                 <Col key={i} lg={6} md={12} sm={24}>
-                                    <Card
-                                        className={"animated w-100 zoomIn"}
-                                        hoverable
-                                        cover={
-                                            !spin && (
-                                                <img alt="example" src={g.image}/>
-                                            )
-                                        }
-                                        actions={
-                                            !spin && [
-                                                <Link
-                                                    to={{
-                                                        pathname: `/menu/edit/${g.id}`,
-                                                    }}
-                                                >
-                                                    <Tooltip
-                                                        placement="bottom"
-                                                        className="ml-5"
-                                                        title={t("edit")}
-                                                    >
-                                                        <Button
-                                                            className="border-none"
-                                                            type="text"
-                                                            shape="circle"
-                                                        >
-                                                            <EditFilled/>
-                                                        </Button>
-                                                    </Tooltip>
-                                                    ,
-                                                </Link>,
-                                                <Popconfirm
-                                                    placement="topRight"
-                                                    title={t("areYouSure")}
-                                                    onConfirm={() => deleteItem(g.id)}
-                                                    okText={t("yes")}
-                                                    cancelText={t("no")}
-                                                >
-                                                    <Tooltip
-                                                        placement="bottom"
-                                                        className="ml-5"
-                                                        title={t("delete")}
-                                                    >
-                                                        <Button
-                                                            className="border-none"
-                                                            type="text"
-                                                            shape="circle"
-                                                        >
-                                                            <DeleteFilled/>
-                                                        </Button>
-                                                    </Tooltip>
-                                                </Popconfirm>,
-                                            ]
-                                        }
-                                    >
-                                        <strong className={'line-clamp line-1'}>{g.name}</strong>
-                                        <div className="flex mt-10 w-100 flex-between">
-                                            <div className={'line-clamp line-1'}>{g.category}</div>
-                                            <strong className={'line-clamp line-1'}>{g.price} azn</strong>
-                                        </div>
-                                    </Card>
+                                    <MenuItem
+                                        g={g}
+                                        spin={spin}
+                                        deleteItem={deleteItem}
+                                        slider={false}
+                                    />
                                 </Col>
                             ))}
                         </Row>

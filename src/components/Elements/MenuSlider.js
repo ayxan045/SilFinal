@@ -1,14 +1,40 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Slider from "react-slick";
 import {PicCenterOutlined} from "@ant-design/icons";
 import {Link} from "react-router-dom";
-import {Button} from "antd";
+import {Button, Col} from "antd";
+import admin from "../../const/api";
+import MenuItem from "./MenuItem";
 
 function MenuSlider(props) {
+    const [spin, setSpin] = useState(true);
+    const [gallery, setGallery] = useState([]);
+
+    const getData = (e) => {
+        setSpin(true);
+        admin.get(`menu`).then((res) => {
+            res.data && setSpin(false);
+            setGallery(
+                res.data.map((d, index) => {
+                    return {
+                        ...d,
+                        key: index + 1,
+                        index,
+                    };
+                })
+            );
+        });
+    };
+
+    useEffect(()=>{
+        getData()
+    },[])
+
     let settings = {
         dots: false,
-        infinite: false,
+        infinite: true,
         speed: 500,
+        autoplay:true,
         slidesToShow: 4,
         slidesToScroll: 4,
         initialSlide: 0,
@@ -16,18 +42,8 @@ function MenuSlider(props) {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
-                    initialSlide: 2
                 }
             },
             {
@@ -39,6 +55,7 @@ function MenuSlider(props) {
             }
         ]
     };
+
     return (
         <div className="">
             <div className="border flex-between page-heading flex p-2 mt-0 bg-white">
@@ -56,32 +73,17 @@ function MenuSlider(props) {
                     </Link>
                 </div>
             </div>
-            <Slider className={'border mt-10 bg-white'} {...settings}>
-                <div className={'p-1'}>
-                  <div className="p-2 border bg-white">
-                      1
-                  </div>
-                </div>
-                <div className={'p-1'}>
-                    <div className="p-2 border bg-white">
-                        1
+            <Slider  {...settings}>
+                {gallery.map((g, i) => (
+                    <div className={'p-1'}>
+                        <MenuItem
+                            key={i}
+                            g={g}
+                            spin={spin}
+                            slider={true}
+                        />
                     </div>
-                </div>
-                <div className={'p-1'}>
-                    <div className="p-2 border bg-white">
-                        1
-                    </div>
-                </div>
-                <div className={'p-1'}>
-                    <div className="p-2 border bg-white">
-                        1
-                    </div>
-                </div>
-                <div className={'p-1'}>
-                    <div className="p-2 border bg-white">
-                        1
-                    </div>
-                </div>
+                ))}
             </Slider>
 
         </div>
