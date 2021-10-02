@@ -318,6 +318,9 @@ textarea.ant-input {
   background: #5fb656 !important;
   color: white !important;
 }
+.ant-table-tbody > tr.ant-table-row:hover > td .red, .ant-table-tbody > tr.ant-table-row:hover > td .green, .ant-table-tbody > tr.ant-table-row:hover > td .blue {
+  color: white !important;
+}
 
 .ant-col {
   flex: 0 0 100%;

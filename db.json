@@ -1,34 +1,241 @@
 {
   "orders": [
     {
-      "total": 123,
-      "id": 1
+      "table_id": 1,
+      "person_id": 1,
+      "person": "Murad Nerimanli",
+      "table": "masa 1",
+      "status": 2,
+      "date": "2021-10-02T08:58:56.660Z",
+      "total": 80,
+      "id": 4
+    },
+    {
+      "table_id": 2,
+      "person_id": 2,
+      "person": "Elşən Məmmədov",
+      "table": "masa 2",
+      "status": 3,
+      "date": "2021-10-02T09:26:38.288Z",
+      "total": 0,
+      "id": 6
+    },
+    {
+      "table_id": 2,
+      "person_id": 1,
+      "person": "Murad Nerimanli",
+      "table": "masa 2",
+      "status": 0,
+      "date": "2021-10-02T09:27:14.089Z",
+      "total": 0,
+      "id": 7
+    },
+    {
+      "table_id": 2,
+      "person_id": 2,
+      "person": "Elşən Məmmədov",
+      "table": "masa 2",
+      "status": 1,
+      "date": "2021-10-02T09:33:27.891Z",
+      "total": 0,
+      "id": 8
     }
   ],
   "order-products": [
     {
-      "category_id": 4,
-      "menu_id": 5,
-      "price": 25,
-      "count": 3,
-      "total": 75,
+      "category_id": 7,
+      "menu_id": 13,
+      "count": 4,
+      "price": 6,
+      "total": 24,
       "order_id": "1",
-      "image": "https://resant.foodelz.com/uploads/items/IMG_1127712451.png",
-      "menu": " Səhər Yeməyi 2 Nəfərlik",
-      "category": "Səhər Yeməyi",
+      "status": 1,
+      "image": "https://resant.foodelz.com/uploads/items/IMG_2600320034.png",
+      "menu": "Qaymaqlı Krevet şorbası",
+      "category": "Şorbalar",
       "id": 1
     },
     {
-      "category_id": 5,
-      "menu_id": 7,
-      "price": 12,
+      "category_id": 7,
+      "menu_id": 13,
       "count": 4,
-      "total": 48,
+      "price": 6,
+      "total": 24,
       "order_id": "1",
-      "image": "https://resant.foodelz.com/uploads/items/IMG_7671360772.png",
-      "menu": "  Avropa Pendir çeşidləri",
-      "category": "Qəlyanaltılar",
+      "status": 2,
+      "image": "https://resant.foodelz.com/uploads/items/IMG_2600320034.png",
+      "menu": "Qaymaqlı Krevet şorbası",
+      "category": "Şorbalar",
       "id": 2
+    },
+    {
+      "category_id": 7,
+      "menu_id": 14,
+      "count": 3,
+      "price": 5,
+      "total": 15,
+      "order_id": "1",
+      "status": 1,
+      "image": "https://resant.foodelz.com/uploads/items/IMG_2208374844.png",
+      "menu": "Tomat Krem şorbası  ",
+      "category": "Şorbalar",
+      "id": 3
+    },
+    {
+      "category_id": 6,
+      "menu_id": 10,
+      "count": 3,
+      "price": 6,
+      "total": 18,
+      "order_id": "2",
+      "status": 1,
+      "image": "https://resant.foodelz.com/uploads/items/IMG_4552602147.png",
+      "menu": " Garden Toyuq Salatı  ",
+      "category": "Salatlar",
+      "id": 4
+    },
+    {
+      "category_id": 8,
+      "menu_id": 19,
+      "count": 4,
+      "price": 13,
+      "total": 52,
+      "order_id": "1",
+      "status": 0,
+      "image": "https://resant.foodelz.com/uploads/items/IMG_6643575353.png",
+      "menu": "Qrildə Forel ",
+      "category": "Əsas Yeməklər",
+      "id": 5
+    },
+    {
+      "category_id": 8,
+      "menu_id": 20,
+      "count": 3,
+      "price": 12,
+      "total": 36,
+      "order_id": "1",
+      "status": 0,
+      "image": "https://resant.foodelz.com/uploads/items/IMG_1258574005.png",
+      "menu": "Tabaka Kənd çolpası ",
+      "category": "Əsas Yeməklər",
+      "id": 6
+    },
+    {
+      "category_id": 8,
+      "menu_id": 19,
+      "count": 3,
+      "price": 13,
+      "total": 39,
+      "order_id": "3",
+      "status": 3,
+      "image": "https://resant.foodelz.com/uploads/items/IMG_6643575353.png",
+      "menu": "Qrildə Forel ",
+      "category": "Əsas Yeməklər",
+      "id": 7
+    },
+    {
+      "category_id": 9,
+      "menu_id": 24,
+      "count": 3,
+      "price": 10,
+      "total": 30,
+      "order_id": "3",
+      "status": 2,
+      "image": "https://resant.foodelz.com/uploads/items/IMG_2852010327.png",
+      "menu": "Tikə Kabab  ",
+      "category": "Kabablar",
+      "id": 9
+    },
+    {
+      "category_id": 5,
+      "menu_id": 8,
+      "count": 3,
+      "price": 4,
+      "total": 12,
+      "order_id": "3",
+      "status": 1,
+      "image": "https://resant.foodelz.com/uploads/items/IMG_3736499181.png",
+      "menu": "  Ağ Pendir ",
+      "category": "Qəlyanaltılar",
+      "id": 10
+    },
+    {
+      "category_id": 16,
+      "menu_id": 48,
+      "count": 3,
+      "price": 35,
+      "total": 105,
+      "order_id": "3",
+      "status": 0,
+      "image": "https://resant.foodelz.com/uploads/items/IMG_6114739592.png",
+      "menu": "Səhər Yeməyi 4 Nəfərlik  ",
+      "category": "Ailə Səhər Yemək Menyusu",
+      "id": 11
+    },
+    {
+      "category_id": 4,
+      "menu_id": 5,
+      "count": 3,
+      "price": 25,
+      "total": 75,
+      "order_id": "[object Object]",
+      "status": 1,
+      "image": "https://resant.foodelz.com/uploads/items/IMG_1127712451.png",
+      "menu": " Səhər Yeməyi 2 Nəfərlik",
+      "category": "Səhər Yeməyi",
+      "id": 12
+    },
+    {
+      "category_id": 4,
+      "menu_id": 5,
+      "count": 3,
+      "price": 25,
+      "total": 75,
+      "order_id": "[object Object]",
+      "status": 1,
+      "image": "https://resant.foodelz.com/uploads/items/IMG_1127712451.png",
+      "menu": " Səhər Yeməyi 2 Nəfərlik",
+      "category": "Səhər Yeməyi",
+      "id": 13
+    },
+    {
+      "category_id": 6,
+      "menu_id": 12,
+      "count": 3,
+      "price": 9,
+      "total": 27,
+      "order_id": "5",
+      "status": 0,
+      "image": "https://resant.foodelz.com/uploads/items/IMG_961213314.png",
+      "menu": "Sezar Toyuq Ilə",
+      "category": "Salatlar",
+      "id": 14
+    },
+    {
+      "category_id": 4,
+      "menu_id": 6,
+      "count": 2,
+      "price": 40,
+      "total": 80,
+      "order_id": "4",
+      "status": 0,
+      "image": "https://resant.foodelz.com/uploads/items/IMG_1491620873.png",
+      "menu": " Səhər Yeməyi 4 Nəfərlik",
+      "category": "Səhər Yeməyi",
+      "id": 15
+    },
+    {
+      "category_id": 4,
+      "menu_id": 5,
+      "count": 3,
+      "price": 25,
+      "total": 75,
+      "order_id": "8",
+      "status": 2,
+      "image": "https://resant.foodelz.com/uploads/items/IMG_1127712451.png",
+      "menu": " Səhər Yeməyi 2 Nəfərlik",
+      "category": "Səhər Yeməyi",
+      "id": 16
     }
   ],
   "categories": [
@@ -559,17 +766,10 @@
       "id": 51
     }
   ],
-  "totals": [
-    {
-      "id": 1,
-      "order_id":1,
-      "total": 4343
-    }
-  ],
   "reasons": [
     {
       "id": 1,
-      "order_id":1,
+      "order_id": 1,
       "reason": "aafad"
     }
   ]

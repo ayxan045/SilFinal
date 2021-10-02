@@ -291,6 +291,9 @@ textarea.ant-input {
 .ant-table-tbody > tr.ant-table-row:hover > td{
   background: $selectedmenu !important;
   color:white !important;
+  .red , .green , .blue{
+    color:white !important;
+  }
 }
 .ant-col{
   flex: 0 0 100%;

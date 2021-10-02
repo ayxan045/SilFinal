@@ -8,13 +8,14 @@ import {
     Tooltip,
     Spin,
     Popconfirm,
-    Modal, Select,
+     Select,
 } from "antd";
 import {
     PicCenterOutlined,
     EyeFilled,
     DeleteFilled,
-    EditFilled,
+    CheckCircleOutlined,
+    EditFilled, CloseCircleOutlined,
 } from "@ant-design/icons";
 import moment from "moment";
 import admin from "../../../const/api";
@@ -22,7 +23,6 @@ import { notify } from "../../../redux/actions";
 import { useTranslation } from "react-i18next";
 import { convertColumns } from "../../../utils/columnconverter";
 import { connect } from "react-redux";
-import OrderItems from "./OrderItems";
 import { Link } from "react-router-dom";
 const {Option} = Select
 function Orders(props) {
@@ -30,14 +30,12 @@ function Orders(props) {
     const [status , setStatus] = useState(undefined)
     const [spin, setSpin] = useState(false);
     const { t } = useTranslation();
-    const [selectedData, setSelectedData] = useState(null);
-    const [visibleView, setVisibleView] = useState(false);
     let [trigger, setTrigger] = useState(0);
-
     const cols = [
         { key: "tableIndex", value: "#", con: true },
         { key: "person", value: "Xidmət edən şəxs", con: true },
         { key: "table", value: "Masa", con: true },
+        { key: "total", value: "Ümumi məbləğ", con: false },
         { key: "date", value: "Yaradılma tarixi", con: false },
         { key: "status", value: "Status", con: false },
         { key: "id", value: "", con: false },
@@ -86,41 +84,78 @@ function Orders(props) {
                     <span className="blue">Sonlanmayan</span>
                 ) :
                 i === 2 ? (
-                    <span className="red">Sonlanan</span>
-                ): <span className="red">Ləğv edilmiş</span>
+                    <span className="green">Sonlanan</span>
+                ):
+                i === 3 ? (
+                     <span className="red">Ləğv edilmiş</span>
+                ):null
             },
         },
         {
             title: "",
-            dataIndex: "id",
+            dataIndex: "buttons",
             key: "9",
             render: (i) => {
                 return (
                     <div className="flex flex-end">
-                        <Tooltip className="ml-5" title={t("edit")} placement="topRight">
-                            <Link
-                                to={{
-                                    pathname: `/orders/edit/${i}`,
-                                }}
-                            >
-                                <Button className="border-none" type="text" shape="circle">
-                                    <EditFilled />
-                                </Button>
-                            </Link>
-                        </Tooltip>
+                        {i.status === 0 &&
+                            <Tooltip className="ml-5" title={t("edit")} placement="topRight">
+                                <Link
+                                    to={{
+                                        pathname: `/orders/edit/${i.id}`,
+                                    }}
+                                >
+                                    <Button className="border-none" type="text" shape="circle">
+                                        <EditFilled />
+                                    </Button>
+                                </Link>
+                            </Tooltip>
+                        }
+                        {(i.status === 1) &&
                         <Popconfirm
                             placement="topRight"
-                            title={t("areYouSure")}
-                            onConfirm={() => deletePost(i)}
+                            title={'Sonlandırmaq istədiyinzə əminsinizmi?'}
+                            onConfirm={() => changeStatus(i, 2)}
                             okText={t("yes")}
                             cancelText={t("no")}
                         >
-                            <Tooltip className="ml-5" title={t("delete")}>
+                            <Tooltip placement={'bottom'} className="ml-5" title={'Sonlandır'}>
                                 <Button className="border-none" type="text" shape="circle">
-                                    <DeleteFilled />
+                                    <CheckCircleOutlined/>
                                 </Button>
                             </Tooltip>
                         </Popconfirm>
+                        }
+                        {(i.status !== 1) &&
+                            <Popconfirm
+                                placement="topRight"
+                                title={t("areYouSure")}
+                                onConfirm={() => deletePost(i.id)}
+                                okText={t("yes")}
+                                cancelText={t("no")}
+                            >
+                                <Tooltip className="ml-5" title={t("delete")}>
+                                    <Button className="border-none" type="text" shape="circle">
+                                        <DeleteFilled/>
+                                    </Button>
+                                </Tooltip>
+                            </Popconfirm>
+                        }
+                        {(i.status !== 3 && i.status !== 2) &&
+                        <Popconfirm
+                            placement="topRight"
+                            title={'Ləğv etmək istədiyinzə əminsinizmi?'}
+                            onConfirm={() => changeStatus(i, 3)}
+                            okText={t("yes")}
+                            cancelText={t("no")}
+                        >
+                            <Tooltip placement={'bottom'} className="ml-5" title={t("cancel")}>
+                                <Button className="border-none" type="text" shape="circle">
+                                    <CloseCircleOutlined/>
+                                </Button>
+                            </Tooltip>
+                        </Popconfirm>
+                        }
                         <Tooltip
                             className="ml-5"
                             title={'Sifariş məhsulları'}
@@ -128,7 +163,7 @@ function Orders(props) {
                         >
                             <Link
                                 to={{
-                                    pathname: `/orders/products/${i}`,
+                                    pathname: `/orders/products/${i.id}`,
                                 }}
                             >
                                 <Button
@@ -148,10 +183,16 @@ function Orders(props) {
 
     const { notify } = props;
 
-    const viewMessage = async (i) => {
-        await setSelectedData(i);
-        setVisibleView(true);
-    };
+
+    const changeStatus = (i , status) => {
+        let obj ={
+            ...i.obj,
+            status,
+        }
+        admin.put(`orders/${i.id}`,  obj).then(()=>{
+            setTrigger(++trigger);
+        })
+    }
 
     const deletePost = async (i) => {
         if (i === 0 || i) {
@@ -172,15 +213,18 @@ function Orders(props) {
         admin.get(`orders`, { params: { status } }).then((res) => {
             res.data && setSpin(false);
             setPostList(
-                res.data.map((d, index) => {
+                res.data.reverse().map((d, index) => {
                     return {
                         ...d,
                         key: index + 1,
                         index,
                         tableIndex: index + 1,
-                        catId: d.category_id,
                         title: d.name,
-                        desc: d.category_id,
+                        buttons:{
+                            obj:d,
+                            id:d.id,
+                            status:d.status
+                        },
                         date: d.date ? moment(d?.date).format("DD-MM-YYYY hh:mm A") : ''
                     };
                 })
@@ -190,7 +234,7 @@ function Orders(props) {
 
     useEffect(() => {
         getPostList();
-    }, [t, trigger]);
+    }, [t, trigger , status]);
 
     return (
         <div>
@@ -270,24 +314,8 @@ function Orders(props) {
                     )}
                 </>
             </Row>
-
-            <Modal
-                title={t("detailedInfo")}
-                centered
-                className={"padModal mediumModal"}
-                visible={visibleView}
-                onOk={() => setVisibleView(false)}
-                onCancel={() => setVisibleView(false)}
-                footer={[]}
-            >
-                <OrderItems setVisibleView={setVisibleView} id={selectedData} />
-            </Modal>
         </div>
     );
 }
 
-const mapStateToProps = ({ edit, cats }) => {
-    return { edit, cats };
-};
-
-export default connect(mapStateToProps, { notify })(Orders);
+export default connect(null, { notify })(Orders);

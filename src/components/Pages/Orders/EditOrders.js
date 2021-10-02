@@ -39,6 +39,7 @@ function EditOrders(props) {
         await admin.get(`orders/${editing}`).then((res) => {
             let data = res.data
             setDate(data.date)
+            setStatus(data.status)
             setTotal(data.total)
             setSpin(false);
             form.setFieldsValue(data);
@@ -101,7 +102,7 @@ function EditOrders(props) {
                 .then((res) => {
                     notify("", true);
                     form.resetFields();
-                    window.history.back();
+                    history.push(`/orders/products/${editing}`)
                 })
                 .catch((err) => {
                     notify(err.response, false);
@@ -196,6 +197,15 @@ function EditOrders(props) {
                                             <Button className={"mr-15"} htmlType="submit">
                                                 {t("save")}
                                             </Button>
+                                            {editing &&
+                                                <Link
+                                                    to={{
+                                                        pathname: `/orders/products/${editing}`,
+                                                    }}
+                                                >
+                                                    <Button className={"mr-15"}  type={"primary"}>Sifariş məlumatları</Button>
+                                                </Link>
+                                            }
                                             <Link
                                                 to={{
                                                     pathname: `/orders`,
