@@ -719,6 +719,7 @@ m-10 {
   }
   .ant-table-wrapper .ant-table-thead > tr, .ant-table-wrapper .ant-table-tbody > tr {
     background: white;
+    width: 100vw;
     border-radius: 2px;
     margin-bottom: 8px;
     display: block;
