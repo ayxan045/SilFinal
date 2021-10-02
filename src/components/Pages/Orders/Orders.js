@@ -38,7 +38,7 @@ function Orders(props) {
         { key: "total", value: "Ümumi məbləğ", con: false },
         { key: "date", value: "Yaradılma tarixi", con: false },
         { key: "status", value: "Status", con: false },
-        { key: "id", value: "", con: false },
+        { key: "buttons", value: "", con: false },
     ];
 
     const initialColumns = [

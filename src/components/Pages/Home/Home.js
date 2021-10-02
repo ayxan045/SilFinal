@@ -22,13 +22,11 @@ function Home(props) {
                 <div className="border flex-between flex-wrap animated fadeInDown page-heading flex p-2 mt-0 bg-white">
                     <div className="page-name">
                         <PicCenterOutlined className="f-20 mr5-15" />
-                        <span className="f-20 bold">Informasiya</span>
+                        <span className="f-20 bold">İnformasiya</span>
                     </div>
                     <div className="flex">
                         <Link
-                            to={{
-                                pathname: `/orders`,
-                            }}
+                            to={{pathname: `/orders`,}}
                         >
                             <Button className={'mr-15 animated zoomIn'} type={"primary"}>Sifarişlər</Button>
                         </Link>
@@ -44,12 +42,9 @@ function Home(props) {
                         <Col md={12} xs={24}>
                             <OrderStatistics/>
                         </Col>
-
                         <Col md={12} xs={24}>
                             <OrderItemStatistics/>
                         </Col>
-
-
                         {show &&
                         <Col xs={24}>
                             <MenuSlider/>
