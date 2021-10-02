@@ -1,38 +1,13 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Column} from "@ant-design/charts";
+import { Spin } from 'antd';
 
-function OrderStatistics(props) {
-    let data = [
-        {
-            type: '家具家电',
-            sales: 38,
-        },
-        {
-            type: 'dqdq',
-            sales: 22,
-        },
-        {
-            type: 'dqwdd',
-            sales: 32,
-        },
-        {
-            type: 'dqdqd',
-            sales: 32,
-        },
-        {
-            type: 'dqwdqw',
-            sales: 43,
-        },
-        {
-            type: 'qdqdq',
-            sales: 52,
-        },
-    ];
-
+function OrderStatistics({orders, spin}) {
     let config = {
-        data: data,
+        data: orders,
         xField: 'type',
-        yField: 'sales',
+        yField: 'count',
+        colorField: 'type', // or seriesField in some cases
         style:{
             height:'230px'
         },
@@ -42,12 +17,20 @@ function OrderStatistics(props) {
                 fill: '#FFFFFF',
             },
         },
-        colorField: 'type', // or seriesField in some cases
         color: ({ type }) => {
-            if(type === 'male'){
-                return 'red';
+            if(type === 'Yeni sifariş'){
+                return '#5fb656';
             }
-            return '#5fb656';
+            if(type === 'Sonlanmayan'){
+                return '#0312f3';
+            }
+            if(type === 'Sonlanan'){
+                return '#f30327';
+            }
+            if(type === 'Ləğv edilmiş'){
+                return '#650817';
+            }
+            return '#14600c';
         },
         xAxis: {
             label: {
@@ -65,8 +48,10 @@ function OrderStatistics(props) {
 
     return (
         <div className="bg-white p-2">
-            <h2 className={'mb-15'}>Sifarişlər</h2>
-            <Column  {...config} />
+            <Spin spinning={spin}>
+              <h2 className={'mb-15'}>Sifarişlər</h2>
+              <Column  {...config} />
+            </Spin>
         </div>
     );
 }

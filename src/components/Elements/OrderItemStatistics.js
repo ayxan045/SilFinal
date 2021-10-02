@@ -1,54 +1,43 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Bar} from "@ant-design/charts";
+import { Spin } from 'antd';
 
-function OrderItemStatistics(props) {
+function OrderItemStatistics({orders, spin}) {
 
-    let data2 = [
-        {
-            year: '1951 年',
-            value: 38,
-        },
-        {
-            year: '1952 年',
-            value: 52,
-        },
-        {
-            year: '1956 年',
-            value: 61,
-        },
-        {
-            year: '1957 年',
-            value: 145,
-        },
-        {
-            year: '1958 年',
-            value: 48,
-        },
-    ];
-
-    let config2 = {
-        data: data2,
+    let config = {
+        data: orders,
         style:{
             height:'230px'
         },
-        xField: 'value',
-        yField: 'year',
-        seriesField: 'year',
+        xField: 'count',
+        yField: 'type',
+        seriesField: 'type',
         legend: { position: 'top-left' },
         colorField: 'type', // or seriesField in some cases
         color: ({ type }) => {
-            if(type === 'male'){
-                return 'red';
+            if(type === 'Hazırlanır'){
+                return '#5fb656';
             }
-            return '#5fb656';
-        }
+            if(type === 'Təhvil verildi'){
+                return '#0312f3';
+            }
+            if(type === 'Geri verildi'){
+                return '#f30327';
+            }
+            if(type === 'Ləğv edilmiş'){
+                return '#650817';
+            }
+            return '#14600c';
+        },
     };
 
 
     return (
         <div className="bg-white p-2">
-            <h2 className={'mb-15'}>Sifariş edilmiş məhsullar</h2>
-            <Bar {...config2} />
+            <Spin spinning={spin}>
+                <h2 className={'mb-15'}>Sifariş edilmiş məhsullar</h2>
+                <Bar {...config} />
+            </Spin>
         </div>
     );
 }
