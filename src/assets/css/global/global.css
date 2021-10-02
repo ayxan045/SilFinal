@@ -973,6 +973,10 @@ m-10 {
   color: blue;
 }
 
+.line {
+  text-decoration: line-through;
+}
+
 .box-currency p {
   font-weight: bold;
 }
