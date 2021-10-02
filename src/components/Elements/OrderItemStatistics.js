@@ -29,7 +29,7 @@ function OrderItemStatistics(props) {
     let config2 = {
         data: data2,
         style:{
-            height:'250px'
+            height:'230px'
         },
         xField: 'value',
         yField: 'year',

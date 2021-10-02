@@ -50,11 +50,11 @@ function Home(props) {
             <Col xs={24}>
                 <div className="animated zoomIn">
                     <Row gutter={[10, 10]}>
-                        <Col xs={12}>
+                        <Col md={12} xs={24}>
                             <OrderStatistics/>
                         </Col>
 
-                        <Col xs={12}>
+                        <Col md={12} xs={24}>
                             <OrderItemStatistics/>
                         </Col>
 

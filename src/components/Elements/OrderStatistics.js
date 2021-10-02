@@ -34,7 +34,7 @@ function OrderStatistics(props) {
         xField: 'type',
         yField: 'sales',
         style:{
-            height:'250px'
+            height:'230px'
         },
         label: {
             position: 'middle',
