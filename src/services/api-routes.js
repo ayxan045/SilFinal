@@ -1,23 +1,23 @@
 export const routes =  {
   profile:{
     login:'login',
-    user:'users/4'
+    user:'users/5'
   },
   admin:[
     {
       url:'categories',
-      name:'Kateqoriyalar',
-      label:'Kateqoriyanın adı',
+      name:'Categories',
+      label:'Category name',
     },
     {
       url:'tables',
-      name:'Masalar',
-      label:'Masanın adı',
+      name:'Tables',
+      label:'Table name',
     },
     {
       url:'persons',
-      name:'Xidmət edən şəxslər',
-      label:'Şəxsin adı',
+      name:'Waiters',
+      label:'Waiter name',
     }
   ],
   orders:'orders',

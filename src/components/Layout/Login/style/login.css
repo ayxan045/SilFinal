@@ -6,22 +6,23 @@
   width: 100%;
   height: 45px;
   padding: 0 10px;
-  background-color: rgba(92, 182, 86, 0.1);
-  color: #3b7935;
+  background-color: rgba(255 , 0 ,  0 , 17%);
+  
+  color: #390707;
   font-weight: bold;
   margin: 15px 0 5px 0;
   outline: 0;
 }
 .admin-login-box .admin-login-row input:focus {
-  box-shadow: 0 0 2px 0 #327867;
+  box-shadow: 0 0 2px 0 rgb(50, 120, 103);
 }
 .admin-login-box .admin-login-row input[type=submit] {
-  background-color: #5fb656;
+  background-color: red;
   color: #fff;
   cursor: pointer;
 }
 .admin-login-box .admin-login-row input[type=submit]:hover {
-  background-color: #3b7935;
+  background-color: darkred;
 }
 
 .example {

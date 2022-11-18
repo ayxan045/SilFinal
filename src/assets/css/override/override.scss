@@ -144,7 +144,7 @@ tr.ant-table-expanded-row > td, tr.ant-table-expanded-row:hover > td{
   color: $maincolor !important;
 }
 .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
-  background: $menucolor !important;
+  background: red !important;
 }
 
 .ant-menu-submenu-inline > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::before ,

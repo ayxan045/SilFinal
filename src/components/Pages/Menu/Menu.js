@@ -87,7 +87,7 @@ const Menu = (props) => {
                     <div className="border flex-between page-heading flex p-2 mt-0 bg-white">
                         <div className="page-name">
                             <PicCenterOutlined className="f-20 mr5-15"/>
-                            <span className="f-20 bold">Menyu</span>
+                            <span className="f-20 bold">Menu</span>
                         </div>
                         <div>
                             <Link
@@ -95,40 +95,40 @@ const Menu = (props) => {
                                     pathname: `/menu/edit`,
                                 }}
                             >
-                                <Button type={"primary"}>Əlavə et</Button>
+                                <Button type={"primary"}>Add</Button>
                             </Link>
                         </div>
                     </div>
 
-                    <div className="bg-white mt-10 p-1 ">
-                        <Select
-                            showSearch
-                            onChange={(e)=>{ getData(e)}}
-                            placeholder={'Kategoriyalar'}
-                            className={'w-100'}
-                            notFoundContent={null}
-                            optionFilterProp="children"
-                            filterOption={(input, option) =>
-                                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                            }
-                            filterSort={(optionA, optionB) =>
-                                optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
-                            }
-                        >
-                            <Option value={undefined}>
-                              Hamısı
-                            </Option>
-                            {
-                                categories.map((w, i) => {
-                                    return (
-                                        <Option key={i} value={w.id}>
-                                            {w.name}
-                                        </Option>
-                                    );
-                                })
-                            }
-                        </Select>
-                    </div>
+                    {/*<div className="bg-white mt-10 p-1 ">*/}
+                    {/*    <Select*/}
+                    {/*        showSearch*/}
+                    {/*        onChange={(e)=>{ getData(e)}}*/}
+                    {/*        placeholder={'Kategoriyalar'}*/}
+                    {/*        className={'w-100'}*/}
+                    {/*        notFoundContent={null}*/}
+                    {/*        optionFilterProp="children"*/}
+                    {/*        filterOption={(input, option) =>*/}
+                    {/*            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0*/}
+                    {/*        }*/}
+                    {/*        filterSort={(optionA, optionB) =>*/}
+                    {/*            optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())*/}
+                    {/*        }*/}
+                    {/*    >*/}
+                    {/*        <Option value={undefined}>*/}
+                    {/*          Hamısı*/}
+                    {/*        </Option>*/}
+                    {/*        {*/}
+                    {/*            categories.map((w, i) => {*/}
+                    {/*                return (*/}
+                    {/*                    <Option key={i} value={w.id}>*/}
+                    {/*                        {w.name}*/}
+                    {/*                    </Option>*/}
+                    {/*                );*/}
+                    {/*            })*/}
+                    {/*        }*/}
+                    {/*    </Select>*/}
+                    {/*</div>*/}
 
                 </Col>
 
@@ -136,7 +136,7 @@ const Menu = (props) => {
                     <Card loading={spin}>
                         <Row gutter={[16, 16]}>
                             {gallery.map((g, i) => (
-                                <Col key={i} lg={6} md={12} sm={24}>
+                                <Col key={i} lg={8} md={12} sm={24}>
                                     <MenuItem
                                         g={g}
                                         spin={spin}

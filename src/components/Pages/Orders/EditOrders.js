@@ -117,7 +117,7 @@ function EditOrders(props) {
                     <div className="border flex-between page-heading flex p-2 mt-0 bg-white">
                         <div className="page-name">
                             <PicCenterOutlined className="f-20 mr5-15" />
-                            <span className="f-20 bold">Sifariş</span>
+                            <span className="f-20 bold">Order</span>
                         </div>
                         <Link
                             to={{
@@ -138,7 +138,7 @@ function EditOrders(props) {
                             <Form form={form} onFinish={saveItem} layout="vertical">
                                 <Row gutter={[8, 8]}>
                                     <Col md={12} sm={12} xs={24}>
-                                        <p className={"mb-10"}>Masa</p>
+                                        <p className={"mb-10"}>Table</p>
                                         <Form.Item
                                             className="mb-5"
                                             validateTrigger="onChange"
@@ -165,7 +165,7 @@ function EditOrders(props) {
                                         </Form.Item>
                                     </Col>
                                     <Col md={12} sm={12} xs={24}>
-                                        <p className={"mb-10"}>Xidmət edən şəxs</p>
+                                        <p className={"mb-10"}>Waiter</p>
                                         <Form.Item
                                             className="mb-5"
                                             validateTrigger="onChange"
@@ -203,7 +203,7 @@ function EditOrders(props) {
                                                         pathname: `/orders/products/${editing}`,
                                                     }}
                                                 >
-                                                    <Button className={"mr-15"}  type={"primary"}>Sifariş məlumatları</Button>
+                                                    <Button className={"mr-15"}  type={"primary"}>Order details</Button>
                                                 </Link>
                                             }
                                             <Link

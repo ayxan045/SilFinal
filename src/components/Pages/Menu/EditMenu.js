@@ -24,7 +24,7 @@ const { Option } = Select;
 
 function EditMenu(props) {
     const [spin, setSpin] = useState(false);
-    let imageUrl = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F19%2F53%2F4a%2F19534a2be73c101206161b297e76f14f.jpg&f=1&nofb=1'
+    let imageUrl = 'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.clker.com%2Fcliparts%2FV%2Fv%2FE%2FP%2Fw%2FD%2Frestaurant-md.png&f=1&nofb=1&ipt=ea938079e189f789116b6038df2d8d48148f0cc73892290d52eafd39a2e2c8ae&ipo=images'
     const [file, setFile] = useState(imageUrl);
     const [categories, setCategories] = useState([]);
     let editing = props.match.params.id;
@@ -126,7 +126,7 @@ function EditMenu(props) {
                                     <Col xs={20}>
                                         <Row gutter={[16,16]}>
                                             <Col md={12} sm={12} xs={24}>
-                                                <p className={"mb-10"}>Ad</p>
+                                                <p className={"mb-10"}>Name</p>
                                                 <div className="form-lang">
                                                     <Form.Item
                                                         validateTrigger="onChange"
@@ -138,7 +138,7 @@ function EditMenu(props) {
                                                 </div>
                                             </Col>
                                             <Col md={12} sm={12} xs={24}>
-                                                <p className={"mb-10"}>Şəkil (url)</p>
+                                                <p className={"mb-10"}>Photo (url)</p>
                                                 <div className="form-lang">
                                                     <Form.Item
                                                         validateTrigger="onChange"
@@ -151,7 +151,7 @@ function EditMenu(props) {
                                                 </div>
                                             </Col>
                                             <Col md={12} sm={12} xs={24}>
-                                                <p className={"mb-10"}>Kategoriya</p>
+                                                <p className={"mb-10"}>Category</p>
                                                 <Form.Item
                                                     className="mb-5"
                                                     validateTrigger="onChange"
@@ -178,7 +178,7 @@ function EditMenu(props) {
                                                 </Form.Item>
                                             </Col>
                                             <Col md={12} sm={12} xs={24}>
-                                                <p className={"mb-10"}>Qiymət (azn)</p>
+                                                <p className={"mb-10"}>Price (azn)</p>
                                                 <div className="form-lang">
                                                     <Form.Item
                                                         validateTrigger="onChange"

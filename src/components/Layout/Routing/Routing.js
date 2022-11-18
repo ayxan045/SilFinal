@@ -13,7 +13,7 @@ function Routing(props) {
 
     return (
         <Switch>
-            <Route exact path={`/`} component={Home} />
+            <Route exact path={`/`} component={Orders} />
             <Route exact path={`/menu`} component={Menu} />
             <Route exact path={`/menu/edit/:id?`} component={EditMenu} />
             <Route exact path={`/orders`} component={Orders} />

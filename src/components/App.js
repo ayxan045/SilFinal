@@ -55,7 +55,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    localStorage.setItem("locale", "az");
+    localStorage.setItem("locale", "en");
     this.props.getUserData();
     this.setState({ web: window.innerWidth > 1200 });
     window.addEventListener("resize", () => {
@@ -106,7 +106,7 @@ class App extends React.Component {
                 {this.state.web ? (
                   <Sider
                     className="side-menu animated slideInLeft"
-                    style={{ backgroundColor: "white" }}
+                    style={{ backgroundColor: "#001628" }}
                     collapsed={this.state.collapsed}
                     collapsedWidth={80}
                     onCollapse={this.onCollapse}

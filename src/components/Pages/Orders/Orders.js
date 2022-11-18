@@ -43,28 +43,22 @@ function Orders(props) {
 
     const initialColumns = [
         {
-            title: "#",
-            dataIndex: "tableIndex",
-            key: "1",
-            width: 60,
-        },
-        {
-            title: "Xidmət edən şəxs",
+            title: "Waiter",
             dataIndex: "person",
             key: "2",
         },
         {
-            title: "Masa",
+            title: "Table",
             dataIndex: "table",
             key: "3",
         },
         {
-            title: "Yaradılma tarixi",
+            title: "Create date",
             dataIndex: "date",
             key: "4",
         },
         {
-            title: "Ümumi məbləğ",
+            title: "Total price",
             dataIndex: "total",
             key: "5",
             render: (i) => {
@@ -79,15 +73,15 @@ function Orders(props) {
             key: "6",
             render: (i) => {
                 return i === 0 ? (
-                    <span className="green">Yeni</span>
+                    <span className="green">New</span>
                 ) : i === 1 ? (
-                    <span className="blue">Sonlanmayan</span>
+                    <span className="blue">Pending</span>
                 ) :
                 i === 2 ? (
-                    <span className="green">Sonlanan</span>
+                    <span className="green">Finished</span>
                 ):
                 i === 3 ? (
-                     <span className="red">Ləğv edilmiş</span>
+                     <span className="red">Canceled</span>
                 ):null
             },
         },
@@ -114,7 +108,7 @@ function Orders(props) {
                         {(i.status === 1) &&
                         <Popconfirm
                             placement="topRight"
-                            title={'Sonlandırmaq istədiyinzə əminsinizmi?'}
+                            title={'Are you sure for finish? '}
                             onConfirm={() => changeStatus(i, 2)}
                             okText={t("yes")}
                             cancelText={t("no")}
@@ -144,7 +138,7 @@ function Orders(props) {
                         {(i.status !== 3 && i.status !== 2) &&
                         <Popconfirm
                             placement="topRight"
-                            title={'Ləğv etmək istədiyinzə əminsinizmi?'}
+                            title={'Are you sure for cancel? '}
                             onConfirm={() => changeStatus(i, 3)}
                             okText={t("yes")}
                             cancelText={t("no")}
@@ -158,7 +152,7 @@ function Orders(props) {
                         }
                         <Tooltip
                             className="ml-5"
-                            title={'Sifariş məhsulları'}
+                            title={'Order details'}
                             placement="topRight"
                         >
                             <Link
@@ -252,7 +246,7 @@ function Orders(props) {
                     <div className="border flex-between page-heading flex p-2 mt-0 bg-white">
                         <div className="page-name">
                             <PicCenterOutlined className="f-20 mr5-15" />
-                            <span className="f-20 bold">Sifarişlər</span>
+                            <span className="f-20 bold">Orders</span>
                         </div>
                         <div>
                             <Link
@@ -260,43 +254,43 @@ function Orders(props) {
                                     pathname: `/orders/edit`,
                                 }}
                             >
-                                <Button type={"primary"}>Əlavə et</Button>
+                                <Button type={"primary"}>Add</Button>
                             </Link>
                         </div>
                     </div>
 
-                    <div className="bg-white mt-10 p-1 ">
-                        <Select
-                            showSearch
-                            onChange={(e)=>{setStatus(e)}}
-                            placeholder={'Status'}
-                            className={'w-100'}
-                            notFoundContent={null}
-                            optionFilterProp="children"
-                            filterOption={(input, option) =>
-                                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                            }
-                            filterSort={(optionA, optionB) =>
-                                optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
-                            }
-                        >
-                            <Option value={undefined}>
-                                Hamısı
-                            </Option>
-                            <Option value={0}>
-                                Yeni (Məhsulsuz)
-                            </Option>
-                            <Option value={1}>
-                                Sonlanmayan
-                            </Option>
-                            <Option value={2}>
-                                Sonlanan
-                            </Option>
-                            <Option value={3}>
-                                Ləğv edilmiş
-                            </Option>
-                        </Select>
-                    </div>
+                    {/*<div className="bg-white mt-10 p-1 ">*/}
+                        {/*<Select*/}
+                        {/*    showSearch*/}
+                        {/*    onChange={(e)=>{setStatus(e)}}*/}
+                        {/*    placeholder={'Status'}*/}
+                        {/*    className={'w-100'}*/}
+                        {/*    notFoundContent={null}*/}
+                        {/*    optionFilterProp="children"*/}
+                        {/*    filterOption={(input, option) =>*/}
+                        {/*        option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0*/}
+                        {/*    }*/}
+                        {/*    filterSort={(optionA, optionB) =>*/}
+                        {/*        optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())*/}
+                        {/*    }*/}
+                        {/*>*/}
+                        {/*    <Option value={undefined}>*/}
+                        {/*        Hamısı*/}
+                        {/*    </Option>*/}
+                        {/*    <Option value={0}>*/}
+                        {/*        Yeni (Məhsulsuz)*/}
+                        {/*    </Option>*/}
+                        {/*    <Option value={1}>*/}
+                        {/*        Sonlanmayan*/}
+                        {/*    </Option>*/}
+                        {/*    <Option value={2}>*/}
+                        {/*        Sonlanan*/}
+                        {/*    </Option>*/}
+                        {/*    <Option value={3}>*/}
+                        {/*        Ləğv edilmiş*/}
+                        {/*    </Option>*/}
+                        {/*</Select>*/}
+                    {/*</div>*/}
 
                 </Col>
 

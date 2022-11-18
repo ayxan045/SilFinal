@@ -25,7 +25,7 @@ const Login = (props) => {
 
   return (
     <Row className="login-page w-100 h-100vh">
-      <Col lg={10} md={12}>
+      <Col lg={24} md={24}>
         <div className="flex all-center h-100vh loginbackColor">
           <div className="admin-login-box  animated zoomIn  login-page">
             <div className="admin-login-row">
@@ -67,9 +67,7 @@ const Login = (props) => {
           </div>
         </div>
       </Col>
-      <Col lg={14} md={12} sm={0}>
-        <div className="b-100 h-100vh animated fadeIn loginbackground"></div>
-      </Col>
+     
     </Row>
   );
 };

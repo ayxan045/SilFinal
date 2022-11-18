@@ -183,7 +183,7 @@ body {
   height: 100vh;
   position: fixed;
   width: 500px;
-  background: #ffffff24;
+  background: rgba(255, 255, 255, 0.1411764706);
   backdrop-filter: blur(30px);
   top: 0;
   font-weight: bold !important;
@@ -198,7 +198,7 @@ body {
   transition: 0.4s ease-in-out;
 }
 .loginsidebar.black {
-  background: #00000029;
+  background: rgba(0, 0, 0, 0.1607843137);
 }
 
 .overlay {
@@ -519,8 +519,8 @@ body {
 }
 .products .product .heading.left {
   left: -3px;
-  background: #6ba71d;
-  background: linear-gradient(90deg, #6ba71d 0%, #8fce3d 100%);
+  background: rgb(107, 167, 29);
+  background: linear-gradient(90deg, rgb(107, 167, 29) 0%, rgb(143, 206, 61) 100%);
   padding-right: 120px;
   padding-left: 83px;
   padding-top: 25px;
@@ -543,8 +543,8 @@ body {
   padding-bottom: 25px;
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
-  background: #8fce3d;
-  background: linear-gradient(90deg, #8fce3d 0%, #6ba71d 100%);
+  background: rgb(143, 206, 61);
+  background: linear-gradient(90deg, rgb(143, 206, 61) 0%, rgb(107, 167, 29) 100%);
 }
 .products .product .heading.right .list img:nth-child(1) {
   right: 36px;
@@ -743,7 +743,6 @@ body {
   .header nav .nav-menu a {
     padding: 0 8px;
   }
-
   .home .slider .slide h1 {
     padding-left: 20% !important;
     font-size: 38px !important;
@@ -856,7 +855,6 @@ body {
   .header nav .nav-menu .mobileElements .lang span.active {
     opacity: 1;
   }
-
   .home .slick-dots {
     z-index: 3 !important;
   }
@@ -871,7 +869,6 @@ body {
     padding-top: 40px !important;
     width: 65% !important;
   }
-
   .about .words {
     padding-top: 140px;
     padding-bottom: 40px;
@@ -901,7 +898,6 @@ body {
     top: -108px;
     left: -17px;
   }
-
   .products .mainBg img {
     width: 100%;
   }
@@ -932,7 +928,6 @@ body {
     font-size: 16px;
     line-height: 22px;
   }
-
   .packs {
     padding: 0 !important;
   }
@@ -942,11 +937,9 @@ body {
     padding-right: 40px !important;
     padding-left: 40px !important;
   }
-
   .header {
     padding: 20px 40px;
   }
-
   .home .slider .slide h1 {
     font-size: 28px !important;
     line-height: 29px !important;
@@ -961,7 +954,6 @@ body {
   .header nav .nav-menu {
     width: 100%;
   }
-
   .home .slider .slide h1 {
     font-size: 25px !important;
     line-height: 30px !important;
@@ -970,16 +962,13 @@ body {
     padding-top: 20px !important;
     width: 90% !important;
   }
-
   .loginsidebar {
     width: 100%;
     padding: 0 40px;
   }
-
   .login .head img {
     left: 40px;
   }
-
   .about .words img {
     height: 57px;
     padding-left: 0px;
@@ -997,7 +986,6 @@ body {
   .about .yellow .lists img:nth-child(1) {
     display: none;
   }
-
   .products .product .heading .circle {
     width: 30px;
     height: 30px;
@@ -1038,12 +1026,10 @@ body {
   .home .slider .slide p {
     padding-top: 15px !important;
   }
-
   .content, .footer {
     padding-right: 20px !important;
     padding-left: 20px !important;
   }
-
   .header {
     padding: 15px 20px;
   }

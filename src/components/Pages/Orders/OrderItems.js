@@ -32,7 +32,7 @@ const OrderItems = (props) => {
     const { t } = useTranslation();
     const [positions, setPositions] = useState([]);
     const [categories, setCategories] = useState([]);
-    let imageUrl = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F19%2F53%2F4a%2F19534a2be73c101206161b297e76f14f.jpg&f=1&nofb=1'
+    let imageUrl = 'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.clker.com%2Fcliparts%2FV%2Fv%2FE%2FP%2Fw%2FD%2Frestaurant-md.png&f=1&nofb=1&ipt=ea938079e189f789116b6038df2d8d48148f0cc73892290d52eafd39a2e2c8ae&ipo=images'
     const [image, setImage] = useState(imageUrl);
     const [menus, setMenus] = useState([]);
     const [orderData, setOrderData] = useState({});
@@ -47,13 +47,7 @@ const OrderItems = (props) => {
     const { notify } = props;
     const columns = [
         {
-            title: "#",
-            key: "1",
-            dataIndex: "index",
-            width: 80,
-        },
-        {
-            title: "Şəkil",
+            title: "Photo",
             dataIndex: "image",
             key: "2",
             render: (i) => {
@@ -71,12 +65,12 @@ const OrderItems = (props) => {
             dataIndex: "category",
         },
         {
-            title:'Say',
+            title:'Count',
             key: "5",
             dataIndex: "count",
         },
         {
-            title:'Qiymət (azn)',
+            title:'Price (azn)',
             key: "6",
             dataIndex: "price",
             render: (i) => {
@@ -84,7 +78,7 @@ const OrderItems = (props) => {
             },
         },
         {
-            title:'Ümumi (azn)',
+            title:'Total (azn)',
             key: "6",
             dataIndex: "total",
             render: (i) => {
@@ -97,15 +91,15 @@ const OrderItems = (props) => {
             key: "6",
             render: (i) => {
                 return i === 0 ? (
-                    <span className={`green ${orderData.status === 2 && 'line'}`  }>Hazırlanır</span>
+                    <span className={`green ${orderData.status === 2 && 'line'}`  }>Preparing</span>
                 ) : i === 1 ? (
-                        <span className="blue">Təhvil verildi</span>
+                        <span className="blue">Finished</span>
                     ) :
                     i === 2 ? (
-                        <span className="red">Geri verildi</span>
+                        <span className="red">Order returned</span>
                     ):
                     i === 3 ? (
-                        <span className="red">Ləğv edildi</span>
+                        <span className="red">canceled</span>
                     ) : null
             },
         },
@@ -122,7 +116,7 @@ const OrderItems = (props) => {
                             {i.status === 0 &&
                             <Popconfirm
                                 placement="topRight"
-                                title={'Təhvil verildiyinə əminsinizmi ?'}
+                                title={'Are you sure for finish ?'}
                                 onConfirm={() => changeStatus(i ,1)}
                                 okText={t("yes")}
                                 cancelText={t("no")}
@@ -137,7 +131,7 @@ const OrderItems = (props) => {
                             {i.status === 1 &&
                             <Popconfirm
                                 placement="topRight"
-                                title={'Geri verildiyinə əminsinizmi ?'}
+                                title={'Are you sure for return order ?'}
                                 onConfirm={() => changeStatus(i ,2)}
                                 okText={t("yes")}
                                 cancelText={t("no")}
@@ -180,7 +174,7 @@ const OrderItems = (props) => {
                               {(i.status !== 1 && i.status !== 2) &&
                               <Popconfirm
                                   placement="topRight"
-                                  title={'Ləğv etmək istədiyinzə əminsinizmi?'}
+                                  title={'Are you sure for cancel?'}
                                   onConfirm={() => changeStatus(i ,3)}
                                   okText={t("yes")}
                                   cancelText={t("no")}
@@ -387,51 +381,16 @@ const OrderItems = (props) => {
                 <div className="border flex-between page-heading flex p-2 mt-0 bg-white">
                     <div className="page-name">
                         <PicCenterOutlined className="f-20 mr5-15" />
-                        <span className="f-20 bold">Sifariş məlumatları</span>
+                        <span className="f-20 bold">Order details</span>
                     </div>
                     <Link
                         to={{
                             pathname: `/orders`,
                         }}
                     >
-                        <Button type={"primary"}>Sifarişlər</Button>
+                        <Button type={"primary"}>Orders</Button>
                     </Link>
                 </div>
-            </Col>
-            <Col xs={24}>
-                {!spin &&
-                <div className="h-100  animated fadeInLeft  p-2 mt-0 bg-white">
-                    <div className={'flex mt-10 flex-between'}>
-                        <span> Xidmət edən şəxs </span>
-                        <b>{orderData.person}</b>
-                    </div>
-                    <div className={'flex mt-10 flex-between'}>
-                        <span> Masa</span>
-                        <b>{orderData.table}</b>
-                    </div>
-                    <div className={'flex mt-10 flex-between'}>
-                        <span> Status</span>
-                        <b>
-                            {orderData.status === 0 ? (
-                                <span className="green"> Yeni</span>
-                            ) : orderData.status === 1 ? (
-                                    <span className="blue"> Sonlanmayan</span>
-                                ) :
-                                orderData.status === 2 ? (
-                                    <span className="green"> Sonlanan</span>
-                                ):
-                                orderData.status === 3 ? (
-                                    <span className="red"> Ləğv edilmiş</span>
-                                ): null
-                            }
-                        </b>
-                    </div>
-                    <div className={'flex mt-10 flex-between'}>
-                        <span>Ümumi məbləğ</span>
-                        <b>{orderData.total} azn</b>
-                    </div>
-                </div>
-                }
             </Col>
             <Col xs={24}>
                 <Table
@@ -447,124 +406,161 @@ const OrderItems = (props) => {
                     }}
                 />
             </Col>
+            <Col xs={8}>
+                {!spin &&
+                <div className="h-100  animated fadeInLeft  p-2 mt-0 bg-white">
+                    <div className={'flex mt-10 flex-between'}>
+                        <span> Waiter </span>
+                        <b>{orderData.person}</b>
+                    </div>
+                    <div className={'flex mt-10 flex-between'}>
+                        <span> Table</span>
+                        <b>{orderData.table}</b>
+                    </div>
+                    <div className={'flex mt-10 flex-between'}>
+                        <span> Status</span>
+                        <b>
+                            {orderData.status === 0 ? (
+                                <span className="green"> New</span>
+                            ) : orderData.status === 1 ? (
+                                    <span className="blue"> Pending</span>
+                                ) :
+                                orderData.status === 2 ? (
+                                    <span className="green"> Finished</span>
+                                ):
+                                orderData.status === 3 ? (
+                                    <span className="red"> Canceled</span>
+                                ): null
+                            }
+                        </b>
+                    </div>
+                    <div className={'flex mt-10 flex-between'}>
+                        <span>Total price</span>
+                        <b>{orderData.total} azn</b>
+                    </div>
+                </div>
+                }
+            </Col>
             {(orderData.status !== 2 && orderData.status !== 3) &&
-                <Col>
-                    <Card title={t("addTo")} className={"animated fadeInRight"}>
-                        <Form layout="vertical" onFinish={savePosition} form={form}>
-                            <Row gutter={[8, 8]}>
-                                <Col md={4} xs={24}>
-                                    <div className="gallery border w-100">
-                                        <img className={'mainImg w-100'} src={image} alt=""/>
-                                    </div>
-                                </Col>
-                                <Col md={20} xs={24}>
-                                    <Row gutter={[8, 8]}>
-                                        <Col md={12} sm={12} xs={24}>
-                                            <p className={"mb-10"}>Kategoriya</p>
+            <Col xs={16}>
+                <Card title={t("addTo")} className={"animated fadeInRight"}>
+                    <Form layout="vertical" onFinish={savePosition} form={form}>
+                        <Row gutter={[8, 8]}>
+                            <Col md={12} xs={24}>
+                                <div className="gallery border w-100">
+                                    <img className={'mainImg w-100'} src={image} alt=""/>
+                                </div>
+                            </Col>
+                            <Col md={24} xs={24}>
+                                <Row gutter={[8, 8]}>
+                                    <Col md={12} sm={12} xs={24}>
+                                        <p className={"mb-10"}>Category</p>
+                                        <Form.Item
+                                            className="mb-5"
+                                            validateTrigger="onChange"
+                                            name={`category_id`}
+                                            rules={[noWhitespace(t("inputError"))]}
+                                        >
+                                            <Select
+                                                onChange={(e) =>getMenus(e)}
+                                                showSearch
+                                                notFoundContent={null}
+                                                optionFilterProp="children"
+                                                filterOption={(input, option) =>
+                                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                                }
+                                                filterSort={(optionA, optionB) =>
+                                                    optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
+                                                }
+                                            >
+                                                {categories.map((c , i)=>(
+                                                    <Option key={i}  value={c.id}>
+                                                        {c.name}
+                                                    </Option>
+                                                ))}
+                                            </Select>
+                                        </Form.Item>
+                                    </Col>
+                                    <Col md={12} sm={12} xs={24}>
+                                        <p className={"mb-10"}>Products (Menu)</p>
+                                        <Form.Item
+                                            className="mb-5"
+                                            validateTrigger="onChange"
+                                            name={`menu_id`}
+                                            rules={[noWhitespace(t("inputError"))]}
+                                        >
+                                            <Select
+                                                showSearch
+                                                onChange={(e) => menuChange(e) }
+                                                notFoundContent={null}
+                                                disabled={disabled}
+                                                optionFilterProp="children"
+                                                filterOption={(input, option) =>
+                                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                                }
+                                                filterSort={(optionA, optionB) =>
+                                                    optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
+                                                }
+                                            >
+                                                {menus.map((c , i)=>(
+                                                    <Option key={i}  value={c.id}>
+                                                        {c.name}
+                                                    </Option>
+                                                ))}
+                                            </Select>
+                                        </Form.Item>
+                                    </Col>
+                                    <Col md={6} sm={12} xs={24}>
+                                        <p className={"mb-10"}>Count</p>
+                                        <div className="form-lang">
                                             <Form.Item
-                                                className="mb-5"
                                                 validateTrigger="onChange"
-                                                name={`category_id`}
+                                                name={`count`}
                                                 rules={[noWhitespace(t("inputError"))]}
                                             >
-                                                <Select
-                                                    onChange={(e) =>getMenus(e)}
-                                                    showSearch
-                                                    notFoundContent={null}
-                                                    optionFilterProp="children"
-                                                    filterOption={(input, option) =>
-                                                        option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                                                    }
-                                                    filterSort={(optionA, optionB) =>
-                                                        optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
-                                                    }
-                                                >
-                                                    {categories.map((c , i)=>(
-                                                        <Option key={i}  value={c.id}>
-                                                            {c.name}
-                                                        </Option>
-                                                    ))}
-                                                </Select>
+                                                <InputNumber
+                                                    onChange={(e) =>{countChange(e)}}
+                                                    min={1} className="w-100" />
                                             </Form.Item>
-                                        </Col>
-                                        <Col md={12} sm={12} xs={24}>
-                                            <p className={"mb-10"}>Məhsullar (Menu)</p>
+                                        </div>
+                                    </Col>
+                                    <Col md={6} sm={12} xs={24}>
+                                        <p className={"mb-10"}>Price (azn)</p>
+                                        <div className="form-lang">
                                             <Form.Item
-                                                className="mb-5"
                                                 validateTrigger="onChange"
-                                                name={`menu_id`}
+                                                name={`price`}
                                                 rules={[noWhitespace(t("inputError"))]}
                                             >
-                                                <Select
-                                                    showSearch
-                                                    onChange={(e) => menuChange(e) }
-                                                    notFoundContent={null}
-                                                    disabled={disabled}
-                                                    optionFilterProp="children"
-                                                    filterOption={(input, option) =>
-                                                        option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                                                    }
-                                                    filterSort={(optionA, optionB) =>
-                                                        optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
-                                                    }
-                                                >
-                                                    {menus.map((c , i)=>(
-                                                        <Option key={i}  value={c.id}>
-                                                            {c.name}
-                                                        </Option>
-                                                    ))}
-                                                </Select>
+                                                <InputNumber readOnly className="w-100" />
                                             </Form.Item>
-                                        </Col>
-                                        <Col md={6} sm={12} xs={24}>
-                                            <p className={"mb-10"}>Say</p>
-                                            <div className="form-lang">
-                                                <Form.Item
-                                                    validateTrigger="onChange"
-                                                    name={`count`}
-                                                    rules={[noWhitespace(t("inputError"))]}
-                                                >
-                                                    <InputNumber
-                                                        onChange={(e) =>{countChange(e)}}
-                                                        min={1} className="w-100" />
-                                                </Form.Item>
-                                            </div>
-                                        </Col>
-                                        <Col md={6} sm={12} xs={24}>
-                                            <p className={"mb-10"}>Qiymət (azn)</p>
-                                            <div className="form-lang">
-                                                <Form.Item
-                                                    validateTrigger="onChange"
-                                                    name={`price`}
-                                                    rules={[noWhitespace(t("inputError"))]}
-                                                >
-                                                    <InputNumber readOnly className="w-100" />
-                                                </Form.Item>
-                                            </div>
-                                        </Col>
-                                        <Col md={12} sm={12} xs={24}>
-                                            <p className={"mb-10"}>Ümumi qiymət</p>
-                                            <div className="form-lang">
-                                                <Form.Item
-                                                    validateTrigger="onChange"
-                                                    name={`total`}
-                                                    rules={[noWhitespace(t("inputError"))]}
-                                                >
-                                                    <InputNumber readOnly className="w-100" />
-                                                </Form.Item>
-                                            </div>
-                                        </Col>
-                                    </Row>
-                                </Col>
-                            </Row>
-                            <div className="flex  flex-end mt-15">
-                                <Button className={'mr-10'}  type={'primary'} htmlType="submit">{t("save")}</Button>
-                                <Button onClick={cancelEditing}>{t("cancel")}</Button>
-                            </div>
-                        </Form>
-                    </Card>
-                </Col>
+                                        </div>
+                                    </Col>
+                                    <Col md={12} sm={12} xs={24}>
+                                        <p className={"mb-10"}>Total costs</p>
+                                        <div className="form-lang">
+                                            <Form.Item
+                                                validateTrigger="onChange"
+                                                name={`total`}
+                                                rules={[noWhitespace(t("inputError"))]}
+                                            >
+                                                <InputNumber readOnly className="w-100" />
+                                            </Form.Item>
+                                        </div>
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </Row>
+                        <div className="flex  flex-end mt-15">
+                            <Button className={'mr-10'}  type={'primary'} htmlType="submit">{t("save")}</Button>
+                            <Button onClick={cancelEditing}>{t("cancel")}</Button>
+                        </div>
+                    </Form>
+                </Card>
+            </Col>
             }
+
+
         </Row>
     );
 };

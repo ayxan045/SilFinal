@@ -42,12 +42,6 @@ const Common = (props) => {
 
     const columns = [
         {
-            title: "#",
-            key: "1",
-            dataIndex: "index",
-            width: 80,
-        },
-        {
             title: t("name"),
             key: "2",
             dataIndex: "name",

@@ -8,7 +8,12 @@ import {
   UserOutlined,
   MenuUnfoldOutlined,
   OrderedListOutlined,
-  CodeSandboxOutlined
+  CodeSandboxOutlined,
+  UnorderedListOutlined,
+  UsergroupAddOutlined,
+  DatabaseFilled,
+  MenuFoldOutlined,
+  InsertRowRightOutlined, GoldOutlined
 } from "@ant-design/icons";
 import { logOut } from "../../redux/actions";
 import admin from "../../const/api";
@@ -18,43 +23,37 @@ const MenuList = (props) => {
   return (
     <Menu
       mode="inline"
-      theme="light"
+      theme="dark"
       className="menu-ul"
     >
-      <Menu.Item key="11">
-        <Link to={`/`}>
-          <HomeOutlined />
-          <span>Ana səhifə</span>
-        </Link>
-      </Menu.Item>
       <Menu.Item key="12">
         <Link to={`/categories`}>
-          <OrderedListOutlined />
-          <span>Kateqoriyalar</span>
+          <InsertRowRightOutlined />
+          <span>Categories</span>
         </Link>
       </Menu.Item>
       <Menu.Item key="13">
         <Link to={`/persons`}>
-          <UserOutlined />
-          <span>Xidmət edənlər</span>
+          <UsergroupAddOutlined />
+          <span>Waitres</span>
         </Link>
       </Menu.Item>
       <Menu.Item key="14">
         <Link to={`/tables`}>
-          <CodeSandboxOutlined />
-          <span>Masalar</span>
+          <DatabaseFilled />
+          <span>Tables</span>
         </Link>
       </Menu.Item>
       <Menu.Item key="15">
         <Link to={`/menu`}>
-          <MenuUnfoldOutlined />
-          <span>Menyu</span>
+          <MenuFoldOutlined />
+          <span>Menu</span>
         </Link>
       </Menu.Item>
       <Menu.Item key="16">
         <Link to={`/orders`}>
-          <AuditOutlined />
-          <span>Sifarişlər</span>
+          <GoldOutlined />
+          <span>Orders</span>
         </Link>
       </Menu.Item>
     </Menu>
