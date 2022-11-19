@@ -8,12 +8,13 @@ function MenuItem({spin , g , deleteItem , slider}) {
     const {t} = useTranslation();
 
     return (
+        
         <Card
             className={"animated w-100 zoomIn"}
             hoverable
             cover={
                 !spin && (
-                    <img alt="example" src={g.image}/>
+                    <img  alt="example" src={g.image}/>
                 )
             }
             actions={
